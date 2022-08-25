@@ -31,7 +31,7 @@
 	font-weight: 500;
 	margin: 0 0.5em;
 	}
-	
+
 	label:first-sibling {
 	margin-left: 0;
 	}
@@ -46,7 +46,7 @@
 	{#await fetchCampaignInfo}
 	<p>...waiting</p>
 	{:then}
-	<a href="campaign">Open</a>
+	<a href="./campaign/{campaignId}">Open</a>
 	<label>Campaign</label> {info.campaignName}
 	<label>Start</label> {info.from}
 	<label>Status</label> In progress

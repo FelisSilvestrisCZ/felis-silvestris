@@ -9,6 +9,7 @@
 	import ColorScale from './color-scale.svelte'
 	*/
 	let campaignId = null;
+	let openApp = false;
 
 	let fetchCampaignId = (async () => {
 	const response = await fetch('https://localhost:7097/api/campaign')
@@ -16,16 +17,10 @@
 	})().then(r => campaignId = r[0].id);
 </script>
 
-<svelte:head>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
-	<script src="https://api.mapy.cz/loader.js"></script>
-	<script>Loader.load()</script>
-</svelte:head>
-
 	{#await fetchCampaignId}
 		<p>...waiting</p>
 	{:then}
-		<VideoIntro bind:campaignId={campaignId} />
+		<VideoIntro bind:campaignId={campaignId} bind:openApp={openApp} />
 	{:catch error}
 		<p>An error occurred!</p>
 	{/await}
