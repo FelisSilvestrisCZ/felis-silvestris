@@ -17,8 +17,12 @@
 	})().then(r => campaignId = r[0].id);
 </script>
 
-	{#await fetchCampaignId}
-		<p>...waiting</p>
+<svelte:head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+</svelte:head>
+
+{#await fetchCampaignId}
+<p>...waiting</p>
 	{:then}
 		<VideoIntro bind:campaignId={campaignId} bind:openApp={openApp} />
 	{:catch error}
