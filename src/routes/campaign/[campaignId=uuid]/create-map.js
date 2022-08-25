@@ -1,4 +1,4 @@
-export default function createMap(data) {
+export default function createMap(data, clickHandler) {
 	if (!data) return;
 	var stred = SMap.Coords.fromWGS84(data.dimensions.area.referencePoint.longitude, data.dimensions.area.referencePoint.latitude);
 	var mapa = new SMap(JAK.gel("mapa"), stred, 14);
@@ -21,14 +21,11 @@ export default function createMap(data) {
 		vrstva.addImage("https://localhost:7097/api/campaign/3c2ea8b0-b612-42f5-8b00-f2c628d8098b/" + overlay.imageUrl, leftTop, rightBottom);
 	});
 
-
-
 	var coords = [];
-
 
 	data.sites.forEach(function (place, index, arr) {
 		var znacka = JAK.mel("div");
-		var obrazek = JAK.mel("img", { src: "./pin.png", style: "height: 24px;" });
+		var obrazek = JAK.mel("img", { src: "../../pin.png", style: "height: 24px;" });
 		znacka.appendChild(obrazek);
 
 		var popisek = JAK.mel("div", {}, { textAlign: "center", fontSize: "10px", color: "black" });
@@ -43,6 +40,17 @@ export default function createMap(data) {
 		var marker = new SMap.Marker(loc, place.name, options);
 		layer.addMarker(marker)
 	});
+
+	var mouse = new SMap.Control.Mouse(SMap.MOUSE_PAN | SMap.MOUSE_WHEEL | SMap.MOUSE_ZOOM); /* Ovládání myší */
+	mapa.addControl(mouse);
+
+	function click(e, elm) { /* Došlo ke kliknutí, spoèítáme kde */
+		if (clickHandler) {
+			var clickCoords = SMap.Coords.fromEvent(e.data.event, mapa).toWGS84();
+			clickHandler(mapa, clickCoords[1], clickCoords[0]);
+        }
+	}
+	mapa.getSignals().addListener(window, "map-click", click); /* Pøi signálu kliknutí volat tuto funkci */    
 
 	var zoom = mapa.computeCenterZoom(coords);
 	mapa.setCenterZoom(zoom[0], zoom[1]);

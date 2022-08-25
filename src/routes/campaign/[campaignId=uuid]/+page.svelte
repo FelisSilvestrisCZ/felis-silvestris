@@ -11,8 +11,6 @@
 	<script>Loader.load()</script>
 </svelte:head>
 
-{campaignId}
-
 <CampaignMap campaignId={campaignId} />
 
 <!--

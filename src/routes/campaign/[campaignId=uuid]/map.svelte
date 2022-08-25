@@ -4,10 +4,14 @@
 	export let map;
 	
 	import createMap from './create-map.js'
+		
+	function clickHandler(m, lat, lon) {
+		console.log(lat + ' ' + lon);
+	}
 	
 	onMount(async () => {
 	if (map) {
-	createMap(map);
+	createMap(map, clickHandler);
 	}
 	});
 </script>
