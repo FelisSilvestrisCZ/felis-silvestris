@@ -1,5 +1,4 @@
 <script>
-	import Arrow from "svelte-bootstrap-icons/lib/ArrowRightCircleFill.svelte";
 	export let campaignId = null;
 
 	let info = null;
@@ -11,18 +10,6 @@
 </script>
 
 <style>
-	.campaign-info {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100vw;
-	max-width: 100vw;
-	background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
-	overflow: hidden;
-	padding: 3em 3em;
-	text-transform: uppercase;
-	}
-
 	.campaign-info {
 	color: lightgray;
 	}
@@ -36,24 +23,12 @@
 	label:first-sibling {
 	margin-left: 0;
 	}
-
-	a {
-	display: block;
-	position: absolute;
-	right: 3em;
-	top: 50%;
-	-ms-transform: translateY(-50%);
-	transform: translateY(-50%);
-	}
 </style>
 
 <div class="campaign-info">
 	{#await fetchCampaignInfo}
 	<p>...waiting</p>
 	{:then}
-	<a href="./campaign/{campaignId}">
-		<Arrow width={48} height={48} />
-	</a>
 	<label>Campaign</label> {info.campaignName}
 	<label>Start</label> {info.from}
 	<label>Status</label> In progress

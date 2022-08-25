@@ -1,5 +1,5 @@
 <script>
-	import VideoIntro from './video-intro.svelte'
+	import VideoIntro from '$lib/video-intro.svelte'
 	/*
 	import ClassificationView from './classification-view.svelte'
 	import MapView from './map-view.svelte'

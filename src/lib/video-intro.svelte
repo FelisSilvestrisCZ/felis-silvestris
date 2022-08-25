@@ -1,16 +1,20 @@
 <script>
-	import CampaignInfo from './campaign-info.svelte'
-	
+	import InfoRibbon from '$lib/info-ribbon.svelte'
+	import CampaignInfo from '$lib/campaign-info.svelte'
+	import MapIcon from "svelte-bootstrap-icons/lib/Map.svelte";
+
 	export let campaignId = null;
 
 	let source = "https://localhost:7097/api/campaign/" + campaignId + "/intro-video";
 	let videosPlayed = 0;
+	let campaignUrl;
 
 	function handleEnded(e) {
 	++videosPlayed;
 	}
 
 	$: source = "https://localhost:7097/api/campaign/" + campaignId + "/intro-video/" + videosPlayed;
+	$: campaignUrl = './campaign/' + campaignId;
 </script>
 
 <style>
@@ -26,6 +30,10 @@
 	background-color: darkgray;
 	overflow: hidden;
 	}
+
+	a {
+	color: skyblue;
+	}
 </style>
 
 <div class="intro">
@@ -34,5 +42,10 @@
 		<source src={source} type="video/mp4"/>
 	</video>
 	{/key}
-	<CampaignInfo bind:campaignId={campaignId} />
+	<InfoRibbon>
+		<CampaignInfo bind:campaignId={campaignId} />
+		<a slot="icons" href={campaignUrl}>
+			<MapIcon width={48} height={48} />
+		</a>
+	</InfoRibbon>
 </div>
