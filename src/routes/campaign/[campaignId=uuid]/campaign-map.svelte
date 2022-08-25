@@ -1,7 +1,7 @@
 <script>
 	import Map from './map.svelte'
 	import InfoRibbon from '$lib/info-ribbon.svelte'
-	import CampaignInfo from '$lib/campaign-info.svelte'
+	import MapInfo from '$lib/map-info.svelte'
 	import FilmIcon from "svelte-bootstrap-icons/lib/Film.svelte";
 
 	export let campaignId;
@@ -28,7 +28,7 @@
 <p>An error occurred!</p>
 {/await}
 	<InfoRibbon>
-		<CampaignInfo bind:campaignId={campaignId} />
+		<MapInfo bind:campaignId={campaignId} />
 		<a slot="icons" href="../..">
 			<FilmIcon width={48} height={48} />
 		</a>
