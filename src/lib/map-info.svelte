@@ -30,7 +30,7 @@
 	<p>...waiting</p>
 	{:then}
 	<label>Area</label> {Math.round(info.area.width/100)/10}&times;{Math.round(info.area.height/100)/10} KM
-	<label>Observation</label> {Math.round(info.totalObservationDays * 10)/10} days at {info.sitesCount} sites
+	<label>Observation</label> {Math.round(info.totalObservationDays * 10)/10} days &nbsp; {info.sitesCount} sites
 	{:catch error}
 	<p>An error occurred!</p>
 	{/await}

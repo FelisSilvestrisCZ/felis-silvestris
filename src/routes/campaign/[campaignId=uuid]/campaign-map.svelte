@@ -2,17 +2,17 @@
 	import Map from './map.svelte'
 	import InfoRibbon from '$lib/info-ribbon.svelte'
 	import MapInfo from '$lib/map-info.svelte'
+	import MapPointInfo from '$lib/map-point-info.svelte'
 	import FilmIcon from "svelte-bootstrap-icons/lib/Film.svelte";
 
 	export let campaignId;
 
 	let map;
-	let clickInfo;
-	
+	let clickLatLon;
+
 	let handleMapClick = ((m, lat, lon) => {
-		clickInfo = lat + " " + lon;
+	clickLatLon = {latitude: lat, longitude: lon};
 	});
-	
 
 	let fetchMap = (async () => {
 	const response = await fetch('https://localhost:7097/api/campaign/' + campaignId + '/map')
@@ -36,7 +36,7 @@
 	<InfoRibbon>
 		<div>
 		<MapInfo bind:campaignId={campaignId}  />
-			{clickInfo}
+		<MapPointInfo bind:campaignId={campaignId} bind:point={clickLatLon} />
 		</div>
 		<a slot="icons" href="../..">
 			<FilmIcon width={48} height={48} />
