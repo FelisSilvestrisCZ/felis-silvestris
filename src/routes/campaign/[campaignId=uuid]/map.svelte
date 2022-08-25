@@ -1,13 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
 
-	export let data;
+	export let map;
 	
 	import createMap from './create-map.js'
 	
 	onMount(async () => {
-	if (data) {
-	createMap(data);
+	if (map) {
+	createMap(map);
 	}
 	});
 </script>

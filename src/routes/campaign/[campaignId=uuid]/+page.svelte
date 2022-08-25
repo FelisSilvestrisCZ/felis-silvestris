@@ -1,7 +1,8 @@
 <script>
 	import { page } from '$app/stores';
+	import CampaignMap from './campaign-map.svelte'
 
-	export let campaignId = $page.params.campaignId;
+	let campaignId = $page.params.campaignId;
 </script>
 
 <svelte:head>
@@ -12,11 +13,12 @@
 
 {campaignId}
 
+<CampaignMap campaignId={campaignId} />
 
 <!--
 <Chart />
 <ClassificationView />
-<MapView />
+
 <ColorScale />
 <ColorScale hue={120} />
 <ColorScale hue={240} />

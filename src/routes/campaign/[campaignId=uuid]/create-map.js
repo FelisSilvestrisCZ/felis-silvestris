@@ -1,6 +1,6 @@
 export default function createMap(data) {
 	if (!data) return;
-	var stred = SMap.Coords.fromWGS84(data.mapCenter.x, data.mapCenter.y);
+	var stred = SMap.Coords.fromWGS84(data.dimensions.area.referencePoint.longitude, data.dimensions.area.referencePoint.latitude);
 	var mapa = new SMap(JAK.gel("mapa"), stred, 14);
 	mapa.addDefaultLayer(SMap.DEF_OPHOTO).enable();
 	mapa.addDefaultControls();
@@ -21,7 +21,7 @@ export default function createMap(data) {
 	var coords = [];
 
 
-	data.places.forEach(function (place, index, arr) {
+	data.sites.forEach(function (place, index, arr) {
 		var znacka = JAK.mel("div");
 		var obrazek = JAK.mel("img", { src: "./pin.png", style: "height: 24px;" });
 		znacka.appendChild(obrazek);
@@ -31,9 +31,9 @@ export default function createMap(data) {
 		//znacka.appendChild(popisek);
 
 		var markerImageUrl = "./pin-4-lightblue-small.png";
-		if (data.placesWithObservationInProgress.includes(place.name)) markerImageUrl = "./pin-4-pink-small.png";
+		if (data.sitesInProgress.includes(place.name)) markerImageUrl = "./pin-4-pink-small.png";
 		var options = { title: place.name + "\r\n" + place.description, url: markerImageUrl };
-		var loc = SMap.Coords.fromWGS84(place.latitude, place.longitude);
+		var loc = SMap.Coords.fromWGS84(place.longitude, place.latitude);
 		coords.push(loc);
 		var marker = new SMap.Marker(loc, place.name, options);
 		layer.addMarker(marker)
