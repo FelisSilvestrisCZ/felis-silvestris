@@ -2,7 +2,6 @@
 	import Map from './map.svelte'
 	import InfoRibbon from '$lib/info-ribbon.svelte'
 	import MapInfo from '$lib/map-info.svelte'
-	import MapPointInfo from '$lib/map-point-info.svelte'
 	import FilmIcon from "svelte-bootstrap-icons/lib/Film.svelte";
 
 	export let campaignId;

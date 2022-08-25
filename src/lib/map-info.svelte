@@ -62,6 +62,8 @@
 	{#if pointInfo.score.scores['Cat'].score}
 	<label>Cat</label> each {Math.round(1 / pointInfo.score.scores['Cat'].score / 2.4)/10} days &nbsp; seen for {Math.round(pointInfo.score.scores['Cat'].hoursWithAnimal)} hrs &nbsp;
 	{Math.round(24 * 19.89 * pointInfo.score.scores['Cat'].score)/10} cats/km<sup>2</sup>
+	{:else}
+	<label>No cat</label>
 	{/if}
 	{/if}
 	{/if}
