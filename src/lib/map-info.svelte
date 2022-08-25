@@ -4,7 +4,7 @@
 	let info = null;
 
 	let fetchAreaInfo = (async () => {
-	const response = await fetch('https://localhost:7097/api/campaign/' + campaignId + '/map-info')
+	const response = await fetch('https://localhost:7097/api/campaign/' + campaignId + '/dimensions')
 	return await response.json()
 	})().then(r => info = r);
 </script>
@@ -29,7 +29,8 @@
 	{#await fetchAreaInfo}
 	<p>...waiting</p>
 	{:then}
-	<label>Area</label> {Math.round(info.width/100)/10}&times;{Math.round(info.height/100)/10} KM
+	<label>Area</label> {Math.round(info.area.width/100)/10}&times;{Math.round(info.area.height/100)/10} KM
+	<label>Observation</label> {Math.round(info.totalObservationDays * 10)/10} days at {info.sitesCount} sites
 	{:catch error}
 	<p>An error occurred!</p>
 	{/await}
