@@ -6,7 +6,13 @@
 
 	export let campaignId;
 
-	let map = null;
+	let map;
+	let clickInfo;
+	
+	let handleMapClick = ((m, lat, lon) => {
+		clickInfo = lat + " " + lon;
+	});
+	
 
 	let fetchMap = (async () => {
 	const response = await fetch('https://localhost:7097/api/campaign/' + campaignId + '/map')
@@ -23,12 +29,15 @@
 {#await fetchMap}
 <p>...waiting</p>
 {:then}
-<Map map={map} />
+<Map map={map} onClick={handleMapClick} />
 {:catch error}
 <p>An error occurred!</p>
 {/await}
 	<InfoRibbon>
-		<MapInfo bind:campaignId={campaignId} />
+		<div>
+		<MapInfo bind:campaignId={campaignId}  />
+			{clickInfo}
+		</div>
 		<a slot="icons" href="../..">
 			<FilmIcon width={48} height={48} />
 		</a>

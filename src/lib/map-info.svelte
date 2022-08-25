@@ -20,7 +20,7 @@
 	margin: 0 0.5em;
 	}
 
-	label:first-sibling {
+	label:first-child {
 	margin-left: 0;
 	}
 </style>

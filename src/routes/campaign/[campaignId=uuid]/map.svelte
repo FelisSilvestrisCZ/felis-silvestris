@@ -2,16 +2,13 @@
 	import { onMount } from 'svelte';
 
 	export let map;
-	
+	export let onClick;
+
 	import createMap from './create-map.js'
-		
-	function clickHandler(m, lat, lon) {
-		console.log(lat + ' ' + lon);
-	}
-	
+
 	onMount(async () => {
 	if (map) {
-	createMap(map, clickHandler);
+	createMap(map, ((m, lat, lon) => {if (onClick) onClick(m, lat, lon);}));
 	}
 	});
 </script>
