@@ -8,15 +8,20 @@ export default function createMap(data) {
 	mapa.addLayer(layer);
 	layer.enable();
 
-	var vrstva = new SMap.Layer.Image();     /* Obrázková vrstva */
-	mapa.addLayer(vrstva);                      /* Pøidat ji do mapy */
-	vrstva.enable();                         /* A povolit */
+	data.overlays.forEach((overlay, index, arr) => {
+		console.log(JSON.stringify(overlay));
+		var vrstva = new SMap.Layer.Image();     /* Obrázková vrstva */
+		mapa.addLayer(vrstva);                      /* Pøidat ji do mapy */
+		vrstva.enable();                         /* A povolit */
 
-	/* Pøidat do vrstvy obrázek */
-	var leftTop = SMap.Coords.fromWGS84(16.819001723475985, 49.589852851319776);
-	var rightBottom = SMap.Coords.fromWGS84(16.895626376524017, 49.55535324868023);
+		/* Pøidat do vrstvy obrázek */
+		var leftTop = SMap.Coords.fromWGS84(overlay.geoRect.min.longitude, overlay.geoRect.max.latitude);
+		var rightBottom = SMap.Coords.fromWGS84(overlay.geoRect.max.longitude, overlay.geoRect.min.latitude);
 
-	vrstva.addImage("./felis-density-map-voronoi.png", leftTop, rightBottom);
+		vrstva.addImage("https://localhost:7097/api/campaign/3c2ea8b0-b612-42f5-8b00-f2c628d8098b/" + overlay.imageUrl, leftTop, rightBottom);
+	});
+
+
 
 	var coords = [];
 
@@ -30,8 +35,8 @@ export default function createMap(data) {
 		popisek.innerHTML = place.name;
 		//znacka.appendChild(popisek);
 
-		var markerImageUrl = "./pin-4-lightblue-small.png";
-		if (data.sitesInProgress.includes(place.name)) markerImageUrl = "./pin-4-pink-small.png";
+		var markerImageUrl = "../../pin-4-lightblue-small.png";
+		if (data.sitesInProgress.includes(place.name)) markerImageUrl = "../../pin-4-pink-small.png";
 		var options = { title: place.name + "\r\n" + place.description, url: markerImageUrl };
 		var loc = SMap.Coords.fromWGS84(place.longitude, place.latitude);
 		coords.push(loc);
