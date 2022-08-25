@@ -19,7 +19,7 @@
 </script>
 
 <style>
-	.campaign-info {
+	.map-point-info {
 	color: lightgray;
 	}
 
@@ -34,12 +34,19 @@
 	}
 </style>
 
-<div class="campaign-info">
+<div class="map-point-info">
 	{#await fetchPointInfo}
 	<p>...waiting</p>
 	{:then}
 	{#if info} {#if info.isOnMap}
-	<label>{info.site.name}</label>{Math.round(info.distanceToSite)} M
+	<label>Site</label>{info.site.name}
+	{#if info.score}
+		<label>Observation</label>{Math.round(info.score.durationInDays * 10)/10} Days
+	{#if info.score.scores['Cat'].score}
+	<label>Cat</label> each {Math.round(1 / info.score.scores['Cat'].score / 2.4)/10} days &nbsp; seen for {Math.round(info.score.scores['Cat'].hoursWithAnimal)} hrs &nbsp;
+	{Math.round(24 * 19.89 * info.score.scores['Cat'].score)/10} cats/km<sup>2</sup>
+	{/if}
+	{/if}
 	{/if} {/if}
 	{:catch error}
 	<p>An error occurred!</p>
