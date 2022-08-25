@@ -33,14 +33,11 @@
 {:catch error}
 <p>An error occurred!</p>
 {/await}
-	<InfoRibbon>
-		<div>
-		<MapInfo bind:campaignId={campaignId}  />
-		<MapPointInfo bind:campaignId={campaignId} bind:point={clickLatLon} />
-		</div>
-		<a slot="icons" href="../..">
-			<FilmIcon width={48} height={48} />
-		</a>
-	</InfoRibbon>
+<InfoRibbon>
+	<MapInfo bind:campaignId={campaignId} bind:point={clickLatLon} />
+	<a slot="icons" href="../..">
+		<FilmIcon width={48} height={48} />
+	</a>
+</InfoRibbon>
 
 
