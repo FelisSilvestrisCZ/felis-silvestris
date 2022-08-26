@@ -6,9 +6,13 @@
 
 	import createMap from './create-map.js'
 
+	function clickHandler(m, lat, lon) {
+	if (onClick) onClick(m, lat, lon);
+	};
+
 	onMount(async () => {
 	if (map) {
-	createMap(map, ((m, lat, lon) => {if (onClick) onClick(m, lat, lon);}));
+		createMap(map, (m, lat, lon) => {if (onClick) onClick(m, lat, lon)});
 	}
 	});
 </script>
