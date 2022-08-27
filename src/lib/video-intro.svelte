@@ -2,12 +2,14 @@
 	import InfoRibbon from '$lib/info-ribbon.svelte'
 	import CampaignInfo from '$lib/campaign-info.svelte'
 	import MapIcon from "svelte-bootstrap-icons/lib/Map.svelte";
-
+	import EyeIcon from "svelte-bootstrap-icons/lib/Eye.svelte";
+	
 	export let campaignId = null;
 
 	let source = "https://localhost:7097/api/campaign/" + campaignId + "/intro-video";
 	let videosPlayed = 0;
 	let campaignUrl;
+	let comparisonUrl;
 
 	function handleEnded(e) {
 	++videosPlayed;
@@ -15,6 +17,7 @@
 
 	$: source = "https://localhost:7097/api/campaign/" + campaignId + "/intro-video/" + videosPlayed;
 	$: campaignUrl = './campaign/' + campaignId;
+	$: comparisonUrl = './comparison/' + campaignId;
 </script>
 
 <style>
@@ -33,6 +36,8 @@
 
 	a {
 	color: skyblue;
+	display: inline-block;
+	margin-left: 1em;
 	}
 </style>
 
@@ -44,8 +49,13 @@
 	{/key}
 	<InfoRibbon>
 		<CampaignInfo bind:campaignId={campaignId} />
-		<a slot="icons" href={campaignUrl}>
-			<MapIcon width={48} height={48} />
-		</a>
+		<div slot="icons">
+			<a href={comparisonUrl}>
+				<EyeIcon width={48} height={48} />
+			</a>
+			<a href={campaignUrl}>
+				<MapIcon width={48} height={48} />
+			</a>	
+		</div>
 	</InfoRibbon>
 </div>
