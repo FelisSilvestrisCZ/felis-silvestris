@@ -1,6 +1,4 @@
 <script>
-	import { ButtonGroup, Button } from 'svelte-mui';
-	
 	export let campaignId = null;
 
 	let pairs = null;
@@ -8,18 +6,30 @@
 	let record2;
 	let source1;
 	let source2;
+	
+	let index;
 
 	let fetchPairs = (async () => {
 	const response = await fetch('https://localhost:7097/api/campaign/' + campaignId + '/individual/pairs-for-comparison')
 	return await response.json()
 	})().then(r => {
-		pairs = r; 
-		record1 = pairs[0].record1; 
-		record2 = pairs[0].record2; 
+		pairs = r;
+		index = 0;
+		record1 = pairs[index].record1; 
+		record2 = pairs[index].record2; 
 		source1 = "https://localhost:7097/api/record/" + record1.id + "/source"; 
 		source2 = "https://localhost:7097/api/record/" + record2.id + "/source";
 		}
 	);
+	
+	function nextPair() {
+		index++;
+		record1 = pairs[index].record1; 
+		record2 = pairs[index].record2; 
+		console.log(record1.id);
+		source1 = "https://localhost:7097/api/record/" + record1.id + "/source"; 
+		source2 = "https://localhost:7097/api/record/" + record2.id + "/source";
+	}
 
 </script>
 
@@ -49,6 +59,7 @@
 		<Button toggle outlined >Different</Button>
 	</ButtonGroup>
 -->
+	<button on:click={nextPair}>Next</button>
 </div>
 	{:catch error}
 	<p>An error occurred!</p>
