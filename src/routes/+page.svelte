@@ -1,7 +1,8 @@
 <script>
 	import VideoIntro from '$lib/video-intro.svelte'
-	/*
 	import ClassificationView from './classification-view.svelte'
+	/*
+
 	import MapView from './map-view.svelte'
 	import Credits from './credits.svelte'
 	import CatboxList from './catbox-list.svelte'
@@ -25,6 +26,7 @@
 <p>...waiting</p>
 	{:then}
 		<VideoIntro bind:campaignId={campaignId} bind:openApp={openApp} />
+		<!--<ClassificationView />-->
 	{:catch error}
 		<p>An error occurred!</p>
 	{/await}
