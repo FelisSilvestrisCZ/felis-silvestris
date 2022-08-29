@@ -38,8 +38,22 @@
 </script>
 
 <style>
-    video {
-	    width: 30vw;
+    .record {
+		position: relative;
+	}
+	.record-info {
+		position: absolute;
+		background-color: rgba(50, 50, 50, 0.5);
+		padding: 1em;
+		font-weigth: bold;
+		color: skyblue;
+		text-transform: uppercase;
+		width: 100%;
+		text-align: center;
+	}
+	video {
+	    width: 50vw;
+		display: block;
 	}
 </style>
 
@@ -49,28 +63,22 @@
 	{:then}
 	
 <DataTable table$aria-label="Records">
-  <Head>
-    <Row>
-      <Cell>Date</Cell>
-      <Cell>Site</Cell>
-      <Cell>Animals</Cell>
-    </Row>
-  </Head>
   <Body>
     {#each slice as item (item.id)}
       <Row>
-        <Cell>{item.dateTime}</Cell>
-        <Cell>{item.siteName}</Cell>
         <Cell>
+			<div class="record">
+			<div class="record-info">{item.siteName} {item.dateTime}</div>
 			<video controls>
 				<source src={'https://localhost:7097/api/record/' + item.id + '/source'} />
 			</video>
+			</div>
 		</Cell>
       </Row>
     {/each}
   </Body>
  
-  <Pagination slot="paginate">
+  <Pagination slot="paginate" style="position: sticky; bottom: 0; background-color: white;">
     <svelte:fragment slot="rowsPerPage">
       <Label>Rows Per Page</Label>
       <Select variant="outlined" bind:value={rowsPerPage} noLabel>
