@@ -1,6 +1,7 @@
 <script>
 	import VideoIntro from '$lib/video-intro.svelte'
 	import ClassificationView from './classification-view.svelte'
+	import CampaignRecordsView from '$lib/campaign-records-view.svelte'
 	/*
 
 	import MapView from './map-view.svelte'
@@ -25,7 +26,8 @@
 {#await fetchCampaignId}
 <p>...waiting</p>
 	{:then}
-		<VideoIntro bind:campaignId={campaignId} bind:openApp={openApp} />
+		<CampaignRecordsView campaignId={campaignId} />
+		<!--<VideoIntro bind:campaignId={campaignId} />-->
 		<!--<ClassificationView />-->
 	{:catch error}
 		<p>An error occurred!</p>
