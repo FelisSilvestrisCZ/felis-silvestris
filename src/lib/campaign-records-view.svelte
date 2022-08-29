@@ -38,7 +38,9 @@
 </script>
 
 <style>
-
+    video {
+	    width: 30vw;
+	}
 </style>
 
 <div class="campaign-info">
@@ -59,7 +61,11 @@
       <Row>
         <Cell>{item.dateTime}</Cell>
         <Cell>{item.siteName}</Cell>
-        <Cell>N/A</Cell>
+        <Cell>
+			<video controls>
+				<source src={'https://localhost:7097/api/record/' + item.id + '/source'} />
+			</video>
+		</Cell>
       </Row>
     {/each}
   </Body>
