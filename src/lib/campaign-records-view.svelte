@@ -1,13 +1,5 @@
 <script>
-	import DataTable, {
-	Head,
-	Body,
-	Row,
-	Cell,
-	Label,
-	SortValue,
-	Pagination
-	} from '@smui/data-table';
+	import DataTable, { Pagination, Label } from '@smui/data-table';
 	import IconButton from '@smui/icon-button';
 	import Select, { Option } from '@smui/select';
 
@@ -17,7 +9,7 @@
 	return await response.json()
 	})().then(r => campaignRecords = r);
 
-	$: items = campaignRecords ? campaignRecords.records : [];
+	$: items = campaignRecords ? campaignRecords.records.filter(r => r.animals && r.animals.cat && r.contentType.startsWith('video/')) : [];
 
 	let campaignRecords = null;
 	let items = [];
@@ -38,47 +30,45 @@
 </script>
 
 <style>
-    .record {
-		position: relative;
+	.record {
+	position: relative;
+	width: 30vw;
+	margin: 1em;
+	display: inline-block;
 	}
 	.record-info {
-		position: absolute;
-		background-color: rgba(50, 50, 50, 0.5);
-		padding: 1em;
-		font-weigth: bold;
-		color: skyblue;
-		text-transform: uppercase;
-		width: 100%;
-		text-align: center;
+	position: absolute;
+	background-color: rgba(50, 50, 50, 0.7);
+	padding: 1em;
+	font-weigth: bold;
+	color: skyblue;
+	text-transform: uppercase;
+	width: 100%;
+	text-align: center;
+	z-index: 10;
 	}
 	video {
-	    width: 50vw;
-		display: block;
+	display: block;
+	width: 100%;
 	}
 </style>
 
-<div class="campaign-info">
+
 	{#await fetchCampaignRecords}
 	<p>...waiting</p>
 	{:then}
 	
-<DataTable table$aria-label="Records">
-  <Body>
+
     {#each slice as item (item.id)}
-      <Row>
-        <Cell>
 			<div class="record">
 			<div class="record-info">{item.siteName} {item.dateTime}</div>
 			<video controls>
 				<source src={'https://localhost:7097/api/record/' + item.id + '/source'} />
 			</video>
 			</div>
-		</Cell>
-      </Row>
     {/each}
-  </Body>
- 
-  <Pagination slot="paginate" style="position: sticky; bottom: 0; background-color: white;">
+
+  <Pagination style="position: sticky; bottom: 0; background-color: white; overflow: visible;">
     <svelte:fragment slot="rowsPerPage">
       <Label>Rows Per Page</Label>
       <Select variant="outlined" bind:value={rowsPerPage} noLabel>
@@ -120,9 +110,8 @@
       disabled={currentPage === lastPage}>last_page</IconButton
     >
   </Pagination>
-</DataTable>	
+
 	
 	{:catch error}
 	<p>An error occurred!</p>
 	{/await}
-</div>
