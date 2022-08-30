@@ -8,6 +8,10 @@
 	const response = await fetch('https://localhost:7097/api/campaign/' + campaignId + '/record')
 	return await response.json()
 	})().then(r => campaignRecords = r);
+	
+	function formatDatetime(dt) {
+		return dt.substring(0, dt.indexOf('+')).replace('T', ' ');
+	}
 
 	$: items = campaignRecords ? campaignRecords.records.filter(r => r.animals && r.animals.cat && r.contentType.startsWith('video/')) : [];
 
@@ -35,17 +39,18 @@
 	width: 30vw;
 	margin: 1em;
 	display: inline-block;
+	background-color: black;
 	}
 	.record-info {
-	position: absolute;
-	background-color: rgba(50, 50, 50, 0.7);
-	padding: 1em;
+	//position: absolute;
+	background-color: rgba(0, 0, 0, 1);
+	padding: 0 1em 0.75em 1em;
 	font-weigth: bold;
 	color: skyblue;
 	text-transform: uppercase;
 	width: 100%;
 	text-align: center;
-	z-index: 10;
+	z-index: 1;
 	}
 	video {
 	display: block;
@@ -61,14 +66,14 @@
 
     {#each slice as item (item.id)}
 			<div class="record">
-			<div class="record-info">{item.siteName} {item.dateTime}</div>
 			<video controls>
 				<source src={'https://localhost:7097/api/record/' + item.id + '/source'} />
 			</video>
+				<div class="record-info">{item.siteName} {formatDatetime(item.dateTime)}</div>
 			</div>
     {/each}
 
-  <Pagination style="position: sticky; bottom: 0; background-color: white; overflow: visible;">
+  <Pagination style="position: sticky; bottom: 0; background-color: white; overflow: visible; z-index: 2;">
     <svelte:fragment slot="rowsPerPage">
       <Label>Rows Per Page</Label>
       <Select variant="outlined" bind:value={rowsPerPage} noLabel>

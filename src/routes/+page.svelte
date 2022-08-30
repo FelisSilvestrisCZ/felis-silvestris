@@ -38,6 +38,11 @@
 />
 		<!-- SMUI Styles -->
 		<link rel="stylesheet" href="/smui.css" />
+		<style>
+			body {
+			background-color: gray;
+			}
+		</style>
 		</svelte:head>
 
 {#await fetchCampaignId}
