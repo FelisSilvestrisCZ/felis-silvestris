@@ -1,9 +1,12 @@
 <script>
 	import IntroSpinner from '$lib/intro-spinner.svelte'
+	import CampaignMap from '$lib/campaign-map.svelte'
+
+	/*
 	import VideoIntro from '$lib/video-intro.svelte'
 	import ClassificationView from './classification-view.svelte'
 	import CampaignRecordsView from '$lib/campaign-records-view.svelte'
-	/*
+
 
 	import MapView from './map-view.svelte'
 	import Credits from './credits.svelte'
@@ -15,6 +18,10 @@
 </script>
 
 <svelte:head>
+	<!-- Mapy.CZ API -->
+	<script src="https://api.mapy.cz/loader.js"></script>
+	<script>Loader.load()</script>
+	<!-- bootstrap -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
 	<!-- Material Icons -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -34,7 +41,7 @@
 {#if !campaignId}
 	<IntroSpinner bind:campaignId={campaignId} />
 {:else}
-	{campaignId}
+	<CampaignMap campaignId={campaignId} />
 {/if}
 
 

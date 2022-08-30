@@ -19,6 +19,7 @@
 	}
 	img {
 		max-width: 200px;
+		margin: 1em;
 	}
 </style>
 <div class="intro">
