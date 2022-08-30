@@ -13,11 +13,7 @@
 	*/
 	let campaignId = null;
 /*
-	let fetchCampaignId = (async () => {
-	const response = await fetch('https://localhost:7097/api/campaign')
-	await new Promise(r => setTimeout(r, 5000));
-	return await response.json()
-	})().then(r => campaignId = r[0].id);
+
 	*/
 </script>
 
