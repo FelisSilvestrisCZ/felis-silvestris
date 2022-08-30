@@ -3,7 +3,7 @@ export default function createMap(data, clickHandler) {
 	var stred = SMap.Coords.fromWGS84(data.dimensions.area.referencePoint.longitude, data.dimensions.area.referencePoint.latitude);
 	var mapa = new SMap(JAK.gel("mapa"), stred, 14);
 	mapa.addDefaultLayer(SMap.DEF_OPHOTO).enable();
-	mapa.addDefaultControls();
+	// mapa.addDefaultControls();
 	var layer = new SMap.Layer.Marker();
 	mapa.addLayer(layer);
 	layer.enable();

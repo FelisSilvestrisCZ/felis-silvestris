@@ -31,12 +31,6 @@
 	background-color: darkgray;
 	overflow: hidden;
 	}
-
-	a {
-	color: skyblue;
-	display: inline-block;
-	margin-left: 1em;
-	}
 </style>
 
 <div class="intro">

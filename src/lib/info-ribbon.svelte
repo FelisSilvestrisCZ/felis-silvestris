@@ -3,17 +3,17 @@
 
 <style>
 	.info-ribbon {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100vw;
-	max-width: 100vw;
-	background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
-	overflow: hidden;
-	padding: 3em 3em;
+	position: fixed;
+	right: 2em;
+	top: 5em;
+	background: rgba(0,0,0,0.8);
+	padding: 1em;
 	text-transform: uppercase;
 	color: skyblue;
 	z-index: 1;
+	text-align: right;
+	border-radius: 4px;
+	color: lightgray;
 	}
 </style>
 

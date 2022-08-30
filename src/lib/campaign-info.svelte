@@ -10,29 +10,26 @@
 </script>
 
 <style>
-	.campaign-info {
-	color: lightgray;
-	}
-
-	label, a {
+	label {
 	color: skyblue;
 	font-weight: 500;
-	margin: 0 0.5em;
+	display: block;
+	margin-top: 0.5em;
 	}
 
 	label:first-child {
-	margin-left: 0;
+	margin-top: 0;
 	}
 </style>
 
-<div class="campaign-info">
+
 	{#await fetchCampaignInfo}
 	<p>...waiting</p>
 	{:then}
 	<label>Campaign</label> {info.campaignName}
-	<label>Start</label> {info.from}
+	<label>Start</label> {info.from.substring(0, info.from.indexOf('T'))}
 	<label>Status</label> In progress
 	{:catch error}
 	<p>An error occurred!</p>
 	{/await}
-</div>
+

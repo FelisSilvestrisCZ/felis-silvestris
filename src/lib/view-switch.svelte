@@ -26,7 +26,7 @@
 <style>
 
 </style>
-<div style="position: fixed; z-index: 10; top: 2em; right: 3em; background-color: rgba(0,0,0, 0.5); border-radius: 6px;"> 
+<div style="position: fixed; z-index: 10; top: 2em; right: 2em; background-color: rgba(0,0,0, 0.5); border-radius: 6px;"> 
 <SegmentedButton style="display: block;"
     segments={views}
     let:segment
