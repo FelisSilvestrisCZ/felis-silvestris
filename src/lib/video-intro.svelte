@@ -35,7 +35,7 @@
 
 <div class="intro">
 	{#key source}
-	<video autoplay muted on:ended={handleEnded} >
+	<video autoplay controls on:ended={handleEnded} >
 		<source src={source} type="video/mp4"/>
 	</video>
 	{/key}
