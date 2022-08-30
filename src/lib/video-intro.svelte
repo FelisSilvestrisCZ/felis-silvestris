@@ -1,8 +1,6 @@
 <script>
 	import InfoRibbon from '$lib/info-ribbon.svelte'
 	import CampaignInfo from '$lib/campaign-info.svelte'
-	import MapIcon from "svelte-bootstrap-icons/lib/Map.svelte";
-	import EyeIcon from "svelte-bootstrap-icons/lib/Eye.svelte";
 	
 	export let campaignId = null;
 
@@ -49,13 +47,5 @@
 	{/key}
 	<InfoRibbon>
 		<CampaignInfo bind:campaignId={campaignId} />
-		<div slot="icons">
-			<a href={comparisonUrl}>
-				<EyeIcon width={48} height={48} />
-			</a>
-			<a href={campaignUrl}>
-				<MapIcon width={48} height={48} />
-			</a>	
-		</div>
 	</InfoRibbon>
 </div>

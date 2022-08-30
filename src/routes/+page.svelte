@@ -2,11 +2,13 @@
 	import IntroSpinner from '$lib/intro-spinner.svelte'
 	import ViewSwitch from '$lib/view-switch.svelte'
 	import CampaignMap from '$lib/campaign-map.svelte'
+	import CampaignRecordsView from '$lib/campaign-records-view.svelte'
+	import VideoIntro from '$lib/video-intro.svelte'
 
 	/*
-	import VideoIntro from '$lib/video-intro.svelte'
+
 	import ClassificationView from './classification-view.svelte'
-	import CampaignRecordsView from '$lib/campaign-records-view.svelte'
+
 
 
 	import MapView from './map-view.svelte'
@@ -16,6 +18,7 @@
 	import ColorScale from './color-scale.svelte'
 	*/
 	let campaignId = null;
+	let selectedView;
 </script>
 
 <svelte:head>
@@ -42,8 +45,16 @@
 {#if !campaignId}
 	<IntroSpinner bind:campaignId={campaignId} />
 {:else}
-	<ViewSwitch />
-	<!--<CampaignMap campaignId={campaignId} /> -->
+	<ViewSwitch bind:selectedView={selectedView} />
+	{#if selectedView && selectedView.name == 'movies'}
+		<VideoIntro campaignId={campaignId} />
+	{/if}
+	{#if selectedView && selectedView.name == 'map'}
+		<CampaignMap campaignId={campaignId} />
+	{/if}
+	{#if selectedView && selectedView.name == 'records'}
+		<CampaignRecordsView campaignId={campaignId} />
+	{/if}
 {/if}
 
 

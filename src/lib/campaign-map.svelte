@@ -2,7 +2,6 @@
 	import Map from './map.svelte'
 	import InfoRibbon from '$lib/info-ribbon.svelte'
 	import MapInfo from '$lib/map-info.svelte'
-	import FilmIcon from "svelte-bootstrap-icons/lib/Film.svelte";
 
 	export let campaignId;
 
@@ -34,9 +33,6 @@
 {/await}
 <InfoRibbon>
 	<MapInfo bind:campaignId={campaignId} bind:point={clickLatLon} />
-	<a slot="icons" href="../..">
-		<FilmIcon width={48} height={48} />
-	</a>
 </InfoRibbon>
 
 

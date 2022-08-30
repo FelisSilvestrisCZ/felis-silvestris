@@ -15,20 +15,8 @@
 	color: skyblue;
 	z-index: 1;
 	}
-
-	.icons-slot {
-	display: block;
-	position: absolute;
-	right: 3em;
-	top: 50%;
-	-ms-transform: translateY(-50%);
-	transform: translateY(-50%);
-	}
 </style>
 
 <div class="info-ribbon">
 	<slot />
-	<div class="icons-slot">
-		<slot name="icons" />
-	</div>
 </div>
