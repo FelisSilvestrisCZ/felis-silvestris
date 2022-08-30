@@ -63,7 +63,6 @@
 	<p>...waiting</p>
 	{:then}
 	
-
     {#each slice as item (item.id)}
 			<div class="record">
 			<video controls>

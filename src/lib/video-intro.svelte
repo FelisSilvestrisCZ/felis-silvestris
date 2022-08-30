@@ -1,16 +1,16 @@
 <script>
 	import InfoRibbon from '$lib/info-ribbon.svelte'
 	import CampaignInfo from '$lib/campaign-info.svelte'
-	
+
 	export let campaignId = null;
 
-	let source = "https://localhost:7097/api/campaign/" + campaignId + "/intro-video";
-	let videosPlayed = 0;
+	let videosPlayed = Math.floor(Math.random() * 10000);
+	let source = "https://localhost:7097/api/campaign/" + campaignId + "/intro-video/" + videosPlayed;
 	let campaignUrl;
 	let comparisonUrl;
 
 	function handleEnded(e) {
-	++videosPlayed;
+		videosPlayed = Math.floor(Math.random() * 10000);
 	}
 
 	$: source = "https://localhost:7097/api/campaign/" + campaignId + "/intro-video/" + videosPlayed;
