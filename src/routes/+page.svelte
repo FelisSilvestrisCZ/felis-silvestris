@@ -1,5 +1,6 @@
 <script>
 	import IntroSpinner from '$lib/intro-spinner.svelte'
+	import ViewSwitch from '$lib/view-switch.svelte'
 	import CampaignMap from '$lib/campaign-map.svelte'
 
 	/*
@@ -41,7 +42,8 @@
 {#if !campaignId}
 	<IntroSpinner bind:campaignId={campaignId} />
 {:else}
-	<CampaignMap campaignId={campaignId} />
+	<ViewSwitch />
+	<!--<CampaignMap campaignId={campaignId} /> -->
 {/if}
 
 

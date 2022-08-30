@@ -16,10 +16,12 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.25.0",
+		"@smui/button": "^6.1.0",
 		"@smui/common": "^6.1.0",
 		"@smui/data-table": "^6.1.0",
 		"@smui/icon-button": "^6.1.0",
 		"@smui/linear-progress": "^6.1.0",
+		"@smui/segmented-button": "^6.1.3",
 		"@smui/select": "^6.1.0",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
