@@ -12,9 +12,6 @@
 	import ColorScale from './color-scale.svelte'
 	*/
 	let campaignId = null;
-/*
-
-	*/
 </script>
 
 <svelte:head>
@@ -34,17 +31,12 @@
 	</style>
 </svelte:head>
 
-<IntroSpinner />
-<!--
-{#await fetchCampaignId}
+{#if !campaignId}
+	<IntroSpinner bind:campaignId={campaignId} />
+{:else}
+	{campaignId}
+{/if}
 
-{:then}
-	<CampaignRecordsView campaignId={campaignId} />
-
-{:catch error}
-	<p>An error occurred!</p>
-{/await}
--->
 
 
 <!--
