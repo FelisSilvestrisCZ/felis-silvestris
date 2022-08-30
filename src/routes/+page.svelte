@@ -1,4 +1,5 @@
 <script>
+	import IntroSpinner from '$lib/intro-spinner.svelte'
 	import VideoIntro from '$lib/video-intro.svelte'
 	import ClassificationView from './classification-view.svelte'
 	import CampaignRecordsView from '$lib/campaign-records-view.svelte'
@@ -11,12 +12,13 @@
 	import ColorScale from './color-scale.svelte'
 	*/
 	let campaignId = null;
-	let openApp = false;
-
+/*
 	let fetchCampaignId = (async () => {
 	const response = await fetch('https://localhost:7097/api/campaign')
+	await new Promise(r => setTimeout(r, 5000));
 	return await response.json()
 	})().then(r => campaignId = r[0].id);
+	*/
 </script>
 
 <svelte:head>
@@ -30,21 +32,23 @@
 	<!-- SMUI Styles -->
 	<link rel="stylesheet" href="/smui.css" />
 	<style>
-		body {
-		background-color: gray;
+		html, body {
+		background-color: #D1F5FF;
 		}
 	</style>
 </svelte:head>
 
+<IntroSpinner />
+<!--
 {#await fetchCampaignId}
-<p>...waiting</p>
-	{:then}
-		<CampaignRecordsView campaignId={campaignId} />
-		<!--<VideoIntro bind:campaignId={campaignId} />-->
-		<!--<ClassificationView />-->
-	{:catch error}
-		<p>An error occurred!</p>
-	{/await}
+
+{:then}
+	<CampaignRecordsView campaignId={campaignId} />
+
+{:catch error}
+	<p>An error occurred!</p>
+{/await}
+-->
 
 
 <!--
