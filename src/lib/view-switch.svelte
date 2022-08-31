@@ -15,6 +15,10 @@
 	icon: 'map',
 	},
 	{
+	name: 'results',
+	icon: 'bar_chart',
+	},
+	{
 	name: 'records',
 	icon: 'camera',
 	},
@@ -34,8 +38,8 @@
     bind:selected={selectedView}
     key={(segment) => segment.name}
   >
-    <Segment {segment} title={segment.name} >
-		<Icon class="material-icons" height="auto">
+    <Segment {segment} title={segment.name}>
+		<Icon class="material-icons" height="auto" style="color: skyblue;">
 			{segment.icon}
 		</Icon>
     </Segment>

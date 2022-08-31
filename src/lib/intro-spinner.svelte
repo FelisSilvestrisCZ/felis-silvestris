@@ -27,7 +27,7 @@
 	}
 </style>
 <div class="intro">
-	<div>
+	<div style="margin: 0 2em">
 	<img src="/fs-logo-transparent.png" />
 	<h1>Felis Silvestris</h1>
 	<h2>Wild cat to countryside</h2>

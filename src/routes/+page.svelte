@@ -4,6 +4,7 @@
 	import CampaignMap from '$lib/campaign-map.svelte'
 	import CampaignRecordsView from '$lib/campaign-records-view.svelte'
 	import VideoIntro from '$lib/video-intro.svelte'
+	import ResultsView from '$lib/results-view.svelte'
 
 	/*
 
@@ -51,6 +52,9 @@
 	{/if}
 	{#if selectedView && selectedView.name == 'map'}
 		<CampaignMap campaignId={campaignId} />
+	{/if}
+	{#if selectedView && selectedView.name == 'results'}
+		<ResultsView campaignId={campaignId} />
 	{/if}
 	{#if selectedView && selectedView.name == 'records'}
 		<CampaignRecordsView campaignId={campaignId} />
