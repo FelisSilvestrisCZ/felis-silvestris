@@ -1,7 +1,9 @@
 <script>
 	export let campaignId;
-	
-	import AnimalActivityChart from '$lib/animal-activity-chart.svelte';
+
+	import Divisor from '$lib/divisor.svelte'
+	import RecordsByHourOfDayChart from '$lib/records-by-hour-of-day-chart.svelte';
+	import RecordsByHourOfDayForSitesAndCatsChart from '$lib/records-by-hour-of-day-for-sites-and-cats-chart.svelte';
 
 
 </script>
@@ -13,5 +15,7 @@
 </style>
 
 <div class="results-view">
-<AnimalActivityChart bind:campaignId={campaignId} />
+	<RecordsByHourOfDayChart bind:campaignId={campaignId} />
+	<Divisor />
+	<RecordsByHourOfDayForSitesAndCatsChart bind:campaignId={campaignId} />
 </div>

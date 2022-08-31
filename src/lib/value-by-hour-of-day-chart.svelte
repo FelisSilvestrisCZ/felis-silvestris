@@ -2,11 +2,13 @@
 	import Chart from 'svelte-frappe-charts';
 
 	export let campaignId;
+	export let urlSuffix;
+	
 	let activities;
 	let chartData;
 
 	const fetchData = (async () => {
-	const response = await fetch('https://localhost:7097/api/campaign/' + campaignId + '/day-activity')
+	const response = await fetch('https://localhost:7097/api/campaign/' + campaignId + '/' + urlSuffix)
 	return await response.json()
 	});
 
@@ -18,11 +20,11 @@
 			labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
 			datasets: []
 		}
-		for (var animalName in a.activities) {
-			if (a.activities[animalName].totalhoursWithAnimal == 0) continue;
+		for (var animalName in a) {
+			if (a [animalName].totalhoursWithAnimal == 0) continue;
 			var dataset = {
 				name: animalName,
-				values: a.activities[animalName].hoursOfDayWithAnimal/*.map(h => h / a.activities[animalName].totalHoursWithAnimal * 24.0)*/
+				values: a[animalName].recordsByHourOfDay/*.map(h => h / a.activities[animalName].totalHoursWithAnimal * 24.0)*/
 			};
 			data.datasets.push(dataset);
 		}
@@ -35,8 +37,8 @@
 {#await fp}
 <p>...waiting</p>
 {:then}
-	<h2>Hours of animal observation by hour of day</h2>
 	<Chart data={chartData} type="line" height="400"/>
+	<slot />
 {:catch error}
 <p>An error occurred!</p>
 {/await}
