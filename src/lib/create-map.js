@@ -38,7 +38,8 @@ export default function createMap(data, clickHandler) {
 		var loc = SMap.Coords.fromWGS84(place.longitude, place.latitude);
 		coords.push(loc);
 		var marker = new SMap.Marker(loc, place.name, options);
-		layer.addMarker(marker)
+		layer.addMarker(marker);
+		// loc.getAltitude().then(r => console.log(place.id + ' ' + place.name + ' ' + r));
 	});
 
 	var mouse = new SMap.Control.Mouse(SMap.MOUSE_PAN | SMap.MOUSE_WHEEL | SMap.MOUSE_ZOOM); /* Ovládání myší */

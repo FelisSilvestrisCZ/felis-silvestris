@@ -2,15 +2,16 @@
 	import DataTable, { Pagination, Label } from '@smui/data-table';
 	import IconButton from '@smui/icon-button';
 	import Select, { Option } from '@smui/select';
+	// import Toolbox from '$lib/campaign-records-filter-toolbox.svelte';
 
 	export let campaignId = null;
 	let fetchCampaignRecords = (async () => {
 	const response = await fetch('https://localhost:7097/api/campaign/' + campaignId + '/record')
 	return await response.json()
 	})().then(r => campaignRecords = r);
-	
+
 	function formatDatetime(dt) {
-		return dt.substring(0, dt.indexOf('+')).replace('T', ' ');
+	return dt.substring(0, dt.indexOf('+')).replace('T', ' ');
 	}
 
 	$: items = campaignRecords ? campaignRecords.records.filter(r => r.animals && r.animals.cat && r.contentType.startsWith('video/')) : [];
@@ -71,6 +72,8 @@
 				<div class="record-info">{item.siteName} {formatDatetime(item.dateTime)}</div>
 			</div>
     {/each}
+
+  <!-- <Toolbox /> -->
 
   <Pagination style="position: sticky; bottom: 0; background-color: white; overflow: visible; z-index: 2;">
     <svelte:fragment slot="rowsPerPage">

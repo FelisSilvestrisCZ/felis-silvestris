@@ -65,9 +65,16 @@
 		<label>No cat</label>
 		{/if}
 		{/if}
+		
+		{#if pointInfo.isInProgress}
+		<label>IN PROGRESS</label>{pointInfo.runInProgress.name} {pointInfo.runInProgress.catbox.name}
+		{#if pointInfo.runInProgress.eradicateApplied}
+		Eradicate
+		{/if}
+		{/if}
 
-	{/if}
-	{:catch error}
-	<p>An error occurred!</p>
+{/if}
+{:catch error}
+<p>An error occurred!</p>
 	{/await}
 

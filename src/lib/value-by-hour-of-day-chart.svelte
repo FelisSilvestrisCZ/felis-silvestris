@@ -21,10 +21,10 @@
 			datasets: []
 		}
 		for (var animalName in a) {
-			if (a [animalName].totalhoursWithAnimal == 0) continue;
+			if (a [animalName].totalRecords == 0) continue;
 			var dataset = {
 				name: animalName,
-				values: a[animalName].recordsByHourOfDay/*.map(h => h / a.activities[animalName].totalHoursWithAnimal * 24.0)*/
+				values: a[animalName].recordsByHourOfDay/*.map(h => h / a[animalName].totalRecords * 24.0 * 100)*/
 			};
 			data.datasets.push(dataset);
 		}
