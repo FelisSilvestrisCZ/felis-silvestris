@@ -6,18 +6,17 @@
 	import VideoIntro from '$lib/video-intro.svelte'
 	import ResultsView from '$lib/results-view.svelte'
 
+
+
+	import ClassificationView from '$lib/classification-view.svelte'
 	/*
-
-	import ClassificationView from './classification-view.svelte'
-
-
-
 	import MapView from './map-view.svelte'
 	import Credits from './credits.svelte'
 	import CatboxList from './catbox-list.svelte'
 	import Chart from './animal-activity-chart.svelte'
 	import ColorScale from './color-scale.svelte'
 	*/
+	
 	let campaignId = null;
 	let selectedView;
 </script>
@@ -27,7 +26,7 @@
 	<script src="https://api.mapy.cz/loader.js"></script>
 	<script>Loader.load()</script>
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" />
 	<!-- Material Icons -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 	<!-- Roboto -->
@@ -59,6 +58,7 @@
 	{#if selectedView && selectedView.name == 'records'}
 		<CampaignRecordsView campaignId={campaignId} />
 	{/if}
+	<!--<ClassificationView />-->
 {/if}
 
 

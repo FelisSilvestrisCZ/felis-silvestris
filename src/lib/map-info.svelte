@@ -37,8 +37,16 @@
 	label:first-child {
 	margin-top: 0;
 	}
-</style>
 
+	span.eradicate {
+	color: palegoldenrod;
+	}
+	
+	.eradicate img {
+		width: 100%;
+		margin-top: 1em;
+	}
+</style>
 
 	{#await fetchAreaInfo}
 	{:then}
@@ -68,8 +76,11 @@
 		
 		{#if pointInfo.isInProgress}
 		<label>IN PROGRESS</label>{pointInfo.runInProgress.name} {pointInfo.runInProgress.catbox.name}
-		{#if pointInfo.runInProgress.eradicateApplied}
-		Eradicate
+		{#if pointInfo.lastEradicateApplicationDate}
+		<div class="eradicate">
+		<img src="eradicate-logo-for-dark-bkg-300pxw.png" />
+		{pointInfo.lastEradicateApplicationDate.substring(0, pointInfo.lastEradicateApplicationDate.indexOf('T'))}
+		</div>
 		{/if}
 		{/if}
 
