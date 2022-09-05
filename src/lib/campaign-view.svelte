@@ -4,6 +4,7 @@
 	import Button from '@smui/button';
 	import CampaignRuns from '$lib/campaign-runs-table.svelte';
 	import CampaignSites from '$lib/campaign-sites-table.svelte';
+	import CampaignCatboxes from '$lib/campaign-catboxes-table.svelte';
 	
 	export let campaignId;
 
@@ -40,6 +41,8 @@
 		<CampaignRuns bind:campaign={campaign} />
 		{:else if active == 'Sites'}
 		<CampaignSites bind:campaign={campaign} />
+		{:else if active == 'Catboxes'}
+		<CampaignCatboxes bind:campaign={campaign} />
 		{/if}
 	</div>
 {:catch error}

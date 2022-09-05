@@ -19,17 +19,15 @@
 		<tr>
 			<th>id</th>
 			<th>name</th>
-			<th>location</th>
 			<th>description</th>
 		</tr>
 	</thead>
 	<tbody>
-	{#each campaign.sites as site}
+	{#each campaign.catboxes as catbox}
 		<tr>
-		<td>{site.id}</td>
-		<td>{site.name}</td>
-		<td>{site.latitude}E {site.longitude}N</td>
-		<td>{site.description}</td>	
+		<td>{catbox.id}</td>
+		<td>{catbox.name}</td>
+		<td>{catbox.description}</td>	
 		</tr>
 	{/each}
 	</tbody>
