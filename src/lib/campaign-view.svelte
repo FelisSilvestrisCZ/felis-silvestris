@@ -3,7 +3,8 @@
 	import TabBar from '@smui/tab-bar';
 	import Button from '@smui/button';
 	import CampaignRuns from '$lib/campaign-runs-table.svelte';
-
+	import CampaignSites from '$lib/campaign-sites-table.svelte';
+	
 	export let campaignId;
 
 	let campaign;
@@ -37,6 +38,8 @@
 	  </TabBar>
 		{#if active == 'Runs'}
 		<CampaignRuns bind:campaign={campaign} />
+		{:else if active == 'Sites'}
+		<CampaignSites bind:campaign={campaign} />
 		{/if}
 	</div>
 {:catch error}
