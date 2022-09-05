@@ -1,4 +1,5 @@
 <script>
+	import IconButton from '@smui/icon-button';
 	export let campaign;
 </script>
 
@@ -21,6 +22,7 @@
 			<th>name</th>
 			<th>location</th>
 			<th>description</th>
+			<th>actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -29,7 +31,12 @@
 		<td>{site.id}</td>
 		<td>{site.name}</td>
 		<td>{site.latitude}E {site.longitude}N</td>
-		<td>{site.description}</td>	
+		<td>{site.description}</td>
+		<td>
+			<IconButton href="#/site/{site.id}" class="material-icons" size="16">
+				forward
+			</IconButton>
+		</td>
 		</tr>
 	{/each}
 	</tbody>
