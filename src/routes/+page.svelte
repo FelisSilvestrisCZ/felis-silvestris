@@ -5,6 +5,7 @@
 	import CampaignRecordsView from '$lib/campaign-records-view.svelte'
 	import VideoIntro from '$lib/video-intro.svelte'
 	import ResultsView from '$lib/results-view.svelte'
+	import CampaignView from '$lib/campaign-view.svelte'
 
 
 
@@ -16,7 +17,7 @@
 	import Chart from './animal-activity-chart.svelte'
 	import ColorScale from './color-scale.svelte'
 	*/
-	
+
 	let campaignId = null;
 	let selectedView;
 </script>
@@ -51,6 +52,9 @@
 	{/if}
 	{#if selectedView && selectedView.name == 'map'}
 		<CampaignMap campaignId={campaignId} />
+	{/if}
+		{#if selectedView && selectedView.name == 'campaign'}
+		<CampaignView campaignId={campaignId} />
 	{/if}
 	{#if selectedView && selectedView.name == 'results'}
 		<ResultsView campaignId={campaignId} />

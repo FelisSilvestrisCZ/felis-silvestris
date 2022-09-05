@@ -15,6 +15,10 @@
 	icon: 'map',
 	},
 	{
+	name: 'campaign',
+	icon: 'list',
+	},
+	{
 	name: 'results',
 	icon: 'bar_chart',
 	},
