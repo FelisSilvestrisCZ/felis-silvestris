@@ -2,9 +2,10 @@
 	import Tab, { Label } from '@smui/tab';
 	import TabBar from '@smui/tab-bar';
 	import Button from '@smui/button';
-	
+	import CampaignRuns from '$lib/campaign-runs-table.svelte';
+
 	export let campaignId;
-	
+
 	let campaign;
 	let active = 'Runs';
 
@@ -21,15 +22,6 @@
 	a {
 	color: skyblue;
 	}
-	table {
-		margin-top: 1em;
-	}
-	th {
-		text-transform: uppercase;
-	}
-	td {
-	font-size: 10px;
-	}
 </style>
 
 {#await fetchDefinition}
@@ -43,33 +35,8 @@
 		  <Label>{tab}</Label>
 		</Tab>
 	  </TabBar>
-		{#if active='Runs'}
-		<table>
-			<thead>
-				<tr>
-					<th>id</th>
-					<th>name</th>
-					<th>site</th>
-					<th>catbox</th>
-					<th>from</th>
-					<th>to</th>
-					<th>note</th>
-				</tr>
-			</thead>
-			<tbody>
-			{#each campaign.runs as run}
-				<tr>
-				<td>{run.id}</td>
-				<td>{run.name}</td>
-				<td>{run.site.name}</td>
-				<td>{run.catbox.name}</td>
-				<td>{run.from}</td>
-				<td>{#if run.isInProgress}In progress{:else}{run.to}{/if}</td>
-				<td>{run.note}</td>	
-				</tr>
-			{/each}
-			</tbody>
-		</table>
+		{#if active == 'Runs'}
+		<CampaignRuns bind:campaign={campaign} />
 		{/if}
 	</div>
 {:catch error}
