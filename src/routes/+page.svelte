@@ -9,8 +9,14 @@
 
 <svelte:head>
 	<!-- Mapy.CZ API -->
-	<!--<script src="https://api.mapy.cz/loader.js"></script>
-	<script>Loader.load()</script>-->
+	<script src="https://api.mapy.cz/loader.js"></script>
+	<script>
+		var loaded;
+		if (!loaded) {
+			Loader.load();
+			loaded = true;
+		}
+	</script>
 	<!-- bootstrap -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" />
 	<!-- Material Icons -->
@@ -27,8 +33,6 @@
 		}
 	</style>
 </svelte:head>
-
-Koko
 
 {#if !campaignId}
 	<IntroSpinner bind:campaignId={campaignId} />
