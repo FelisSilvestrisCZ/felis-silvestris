@@ -28,11 +28,10 @@
 	</style>
 </svelte:head>
 
-<div>
 {#if !campaignId}
 	<IntroSpinner bind:campaignId={campaignId} />
 {:else}
 	{#await goto('/' + campaignId)}
 	{/await}
 {/if}
-</div>
+

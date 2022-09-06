@@ -19,8 +19,8 @@
 </script>
 
 <style>
-	.intro {
-	position: absolute;
+	video {
+	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100vw;
@@ -33,7 +33,7 @@
 	}
 </style>
 
-<div class="intro">
+
 	{#key source}
 	<video autoplay controls on:ended={handleEnded} >
 		<source src={source} type="video/mp4"/>
@@ -42,4 +42,3 @@
 	<InfoRibbon>
 		<CampaignInfo bind:campaignId={campaignId} />
 	</InfoRibbon>
-</div>
