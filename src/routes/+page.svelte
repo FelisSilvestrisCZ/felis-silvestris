@@ -1,25 +1,10 @@
 <script>
+	import { goto } from '$app/navigation';
+
 	import IntroSpinner from '$lib/intro-spinner.svelte'
-	import ViewSwitch from '$lib/view-switch.svelte'
-	import CampaignMap from '$lib/campaign-map.svelte'
-	import CampaignRecordsView from '$lib/campaign-records-view.svelte'
-	import VideoIntro from '$lib/video-intro.svelte'
-	import ResultsView from '$lib/results-view.svelte'
-	import CampaignView from '$lib/campaign-view.svelte'
-
-
-
-	import ClassificationView from '$lib/classification-view.svelte'
-	/*
-	import MapView from './map-view.svelte'
-	import Credits from './credits.svelte'
-	import CatboxList from './catbox-list.svelte'
-	import Chart from './animal-activity-chart.svelte'
-	import ColorScale from './color-scale.svelte'
-	*/
 
 	let campaignId = null;
-	let selectedView;
+
 </script>
 
 <svelte:head>
@@ -43,41 +28,11 @@
 	</style>
 </svelte:head>
 
+<div>
 {#if !campaignId}
 	<IntroSpinner bind:campaignId={campaignId} />
 {:else}
-	<ViewSwitch bind:selectedView={selectedView} />
-	{#if selectedView && selectedView.name == 'movies'}
-		<VideoIntro campaignId={campaignId} />
-	{/if}
-	{#if selectedView && selectedView.name == 'map'}
-		<CampaignMap campaignId={campaignId} />
-	{/if}
-		{#if selectedView && selectedView.name == 'campaign'}
-		<CampaignView campaignId={campaignId} />
-	{/if}
-	{#if selectedView && selectedView.name == 'results'}
-		<ResultsView campaignId={campaignId} />
-	{/if}
-	{#if selectedView && selectedView.name == 'records'}
-		<CampaignRecordsView campaignId={campaignId} />
-	{/if}
-	<!--<ClassificationView />-->
+	{#await goto('/' + campaignId)}
+	{/await}
 {/if}
-
-
-
-<!--
-<Chart />
-<ClassificationView />
-<MapView />
-<ColorScale />
-<ColorScale hue={120} />
-<ColorScale hue={240} />
--->
-<!--
-<div>
-<CatboxList />
-<Credits />
 </div>
--->

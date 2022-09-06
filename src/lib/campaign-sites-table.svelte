@@ -1,5 +1,6 @@
 <script>
 	import IconButton from '@smui/icon-button';
+	
 	export let campaign;
 </script>
 
@@ -33,7 +34,7 @@
 		<td>{site.latitude}E {site.longitude}N</td>
 		<td>{site.description}</td>
 		<td>
-			<IconButton href="#/site/{site.id}" class="material-icons" size="16">
+			<IconButton href="./{campaign.id}/site/{site.id}" class="material-icons" size="16">
 				forward
 			</IconButton>
 		</td>
