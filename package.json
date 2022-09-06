@@ -15,6 +15,7 @@
 		"smui-theme": "smui-theme compile static/smui.css -i src/theme"
 	},
 	"devDependencies": {
+		"@beyonk/svelte-social-auth": "^3.0.0",
 		"@mdi/js": "^7.0.96",
 		"@playwright/test": "^1.25.0",
 		"@smui/button": "^6.1.0",
