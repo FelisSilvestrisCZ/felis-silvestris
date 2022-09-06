@@ -1,1 +1,0 @@
-<h1>Site detail</h1>
