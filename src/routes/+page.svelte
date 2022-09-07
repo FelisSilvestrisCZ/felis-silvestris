@@ -2,7 +2,6 @@
 	import { goto } from '$app/navigation';
 
 	import IntroSpinner from '$lib/intro-spinner.svelte'
-	import { GoogleAuth, FacebookAuth } from '@beyonk/svelte-social-auth'
 
 	let campaignId = null;
 
@@ -41,5 +40,4 @@
 	{#await goto('/' + campaignId)}
 	{/await}
 {/if}
-<GoogleAuth clientId="767600164911-188vntfhokuhaba60jc2ag2d3ta11f6n.apps.googleusercontent.com" on:auth-success={e => console.dir(e.detail.user)} />
 

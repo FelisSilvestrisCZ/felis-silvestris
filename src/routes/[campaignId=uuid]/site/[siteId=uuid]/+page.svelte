@@ -1,9 +1,10 @@
 <script>
 	import { page } from '$app/stores';
+	import SiteDetail from '$lib/site-detail.svelte';
 
 	let campaignId = $page.params.campaignId;
 	let siteId = $page.params.siteId;
-	let selectedView;
 </script>
 
-<h1>Site {siteId} detail</h1>
+<SiteDetail campaignId={campaignId} siteId={siteId} />
+
