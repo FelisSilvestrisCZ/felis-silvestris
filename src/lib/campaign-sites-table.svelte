@@ -6,13 +6,16 @@
 
 <style>
 	table {
-		margin-top: 1em;
+	margin-top: 1em;
 	}
 	th {
-		text-transform: uppercase;
+	text-transform: uppercase;
 	}
 	td {
 	font-size: 10px;
+	}
+	.heatmap {
+	background: gray;
 	}
 </style>
 
@@ -37,6 +40,7 @@
 			<IconButton href="./{campaign.id}/site/{site.id}" class="material-icons" size="16">
 				forward
 			</IconButton>
+			<img class="heatmap" src={'https://95.82.163.85:800/api/campaign/' + campaign.id + '/site/' + site.id + '/heatmap'} />
 		</td>
 		</tr>
 	{/each}

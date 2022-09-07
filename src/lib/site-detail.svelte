@@ -13,10 +13,12 @@
 </script>
 
 <style>
-
+	.heatmap {
+		background: gray;
+	}
 </style>
 
-<img src={'https://95.82.163.85:800/api/campaign/' + campaignId + '/site/' + siteId + '/heatmap'} width="100%"/>
+<img class="heatmap" src={'https://95.82.163.85:800/api/campaign/' + campaignId + '/site/' + siteId + '/heatmap'} />
 
 {#await fetchSiteDetail}
 <p>...waiting</p>
