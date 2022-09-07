@@ -10,7 +10,7 @@
 
 	async function fetchPoint(p) {
 	if (p) {
-	const response = await fetch('https://localhost:7097/api/campaign/' + campaignId + '/map/' + point.latitude + '/' + point.longitude)
+	const response = await fetch('https://95.82.163.85:800/api/campaign/' + campaignId + '/map/' + point.latitude + '/' + point.longitude)
 	return await response.json();
 	} else {
 	return null;
@@ -21,7 +21,7 @@
 	$: isPointInfoVisible = pointInfo && pointInfo.isOnMap;
 
 	let fetchAreaInfo = (async () => {
-	const response = await fetch('https://localhost:7097/api/campaign/' + campaignId + '/dimensions')
+	const response = await fetch('https://95.82.163.85:800/api/campaign/' + campaignId + '/dimensions')
 	return await response.json()
 	})().then(r => areaInfo = r);
 </script>

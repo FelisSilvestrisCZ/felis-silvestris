@@ -13,7 +13,7 @@
 	});
 
 	let fetchMap = (async () => {
-	const response = await fetch('https://localhost:7097/api/campaign/' + campaignId + '/map')
+	const response = await fetch('https://95.82.163.85:800/api/campaign/' + campaignId + '/map')
 	return await response.json()
 	})().then(r => map = r);
 </script>

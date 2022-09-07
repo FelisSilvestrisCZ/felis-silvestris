@@ -7,7 +7,7 @@
 	let siteDetail;
 	
 	let fetchSiteDetail = (async () => {
-	const response = await fetch('https://localhost:7097/api/campaign/' + campaignId + '/site/' + siteId + '/detail')
+	const response = await fetch('https://95.82.163.85:800/api/campaign/' + campaignId + '/site/' + siteId + '/detail')
 	return await response.json()
 	})().then(r => siteDetail = r);
 </script>

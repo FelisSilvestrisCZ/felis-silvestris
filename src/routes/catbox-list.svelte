@@ -6,7 +6,7 @@
 	import Map from './map.svelte'
 	
 	import fetchStore from './fetch.js'
-	const [data, loading, error, get] = fetchStore("https://localhost:7097/api/catbox")
+	const [data, loading, error, get] = fetchStore("https://95.82.163.85:800/api/catbox")
 </script>
 
 <button on:click={get}>

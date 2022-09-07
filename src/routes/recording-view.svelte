@@ -4,7 +4,7 @@
 	export let recording = {
 	LocationName: "loc0",
 	Date: "2022-07-13 0:57:30",
-	Url: "https://localhost:7097/api/record/f0e1deed-a0d3-9e12-eff3-ac024a2d064c",
+	Url: "https://95.82.163.85:800/api/record/f0e1deed-a0d3-9e12-eff3-ac024a2d064c",
 	MimeType: "video/mp4"
 	}
 </script>

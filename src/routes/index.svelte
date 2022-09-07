@@ -10,7 +10,7 @@
 	let campaignId = null;
 
 	let fetchCampaignId = (async () => {
-	const response = await fetch('https://localhost:7097/api/campaign')
+	const response = await fetch('https://95.82.163.85:800/api/campaign')
 	return await response.json()
 	})().then(r => campaignId = r[0].id);
 </script>
