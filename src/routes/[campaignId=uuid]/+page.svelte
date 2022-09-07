@@ -1,6 +1,7 @@
 <script>
 	import { page } from '$app/stores';
 
+	import UserLocation from '$lib/user-location.svelte'
 	import ViewSwitch from '$lib/view-switch.svelte'
 	import CampaignMap from '$lib/campaign-map.svelte'
 	import CampaignRecordsView from '$lib/campaign-records-view.svelte'
@@ -36,6 +37,7 @@
 </svelte:head>
 
 <div>
+	<UserLocation bind:campaignId={campaignId} />
 	<ViewSwitch bind:selectedView={selectedView} />
 	{#if selectedView && selectedView.name == 'movies'}
 		<VideoIntro bind:campaignId={campaignId} />

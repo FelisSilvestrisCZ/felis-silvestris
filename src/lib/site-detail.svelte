@@ -16,13 +16,36 @@
 
 </style>
 
+<img src={'https://95.82.163.85:800/api/campaign/' + campaignId + '/site/' + siteId + '/heatmap'} width="100%"/>
+
 {#await fetchSiteDetail}
 <p>...waiting</p>
 {:then}
-<h1>Site {siteDetail.site.name}</h1>
+<h1>Site {siteDetail.site.name} </h1>
+<table>
+	<thead>
+		<tr>	
+			<th>Id</th>
+		</tr>
+	</thead>
+	<tbody>
+		{#each siteDetail.records as record}
+		<tr>
+			<td>{record.id}</td>
+			<td>{record.dateTime}</td>
+			<td>{record.contentType}</td>
+			<td>
+				{#each record.tags as tag}
+					<span class="tag">#{tag}</span>
+				{/each}
+			</td>
+		</tr>
+		{/each}
+	</tbody>
+</table>
 {:catch error}
 <p>An error occurred!</p>
-
 {/await}
+
 
 <SiteMap campaignId={campaignId} siteId={siteId} />
