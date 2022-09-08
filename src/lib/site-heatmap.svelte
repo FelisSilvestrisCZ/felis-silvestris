@@ -25,9 +25,13 @@
 		return "inside";
 	}
 	
-	function getRecords(day, hour) {
-		var from = new Date(day.getTime() + 86400000 / 24 * hour);
-		var to =  new Date(day.getTime() + 86400000 / 24 * (hour + 1));
+	function getRecords(run, day, hour) {
+		var runFrom = new Date(run.from);
+		var runTo = run.isInProgress ? new Date(Date.now()) : new Date(run.to);
+		var dayFrom = new Date(day.getTime() + 86400000 / 24 * hour);
+		var dayTo =  new Date(day.getTime() + 86400000 / 24 * (hour + 1));
+		var from = runFrom > dayFrom ? runFrom : dayFrom;
+		var to = runTo < dayTo ? runTo : dayTo;
 		return siteDetail.records
 			.filter(r => new Date(r.dateTime) >= from && new Date(r.dateTime) < to)
 			.map(r => {
@@ -49,13 +53,12 @@
 	text-align: left;
 	table-layout: fixed;
 	font-family: 'Roboto', sans-serif;
-	font-size: 10px;
+	//font-size: 10px;
 	border-collapse: collapse;
 	margin: 0.5em 0;
 	}
 	
 	thead {
-		color: gray;
 		margin: 0.25em 0;
 	}
 
@@ -63,6 +66,7 @@
 		margin: 0;
 		padding: 0.25em 0.5em;
 		border: 0;
+		vertical-align: top;
 	}
 	th {
 		padding:0.5em;
@@ -77,7 +81,7 @@
 	}
 	
 	td {
-	color: gray;
+	color: #d0d0d0;
 	position: relative;
 	}
 
@@ -136,8 +140,7 @@
 		<tr>
 			<th colspan="2">{run.from.substring(0, run.from.indexOf('T'))}</th>
 			<th class="name" colspan="3">{run.name}/{run.catboxName}</th>
-			<th class="note" colspan="14">{run.note}</th>
-			<th class="id" colspan="5">{run.id}</th>
+			<th class="note" colspan="19">{run.note}</th>
 		</tr>
 		<!--
 		<tr>
@@ -153,7 +156,7 @@
 				{#each hours as hour}
 				<td class={getHourClasses(run, day, hour)}>
 					{hour}
-					{#each getRecords(day, hour) as record}
+					{#each getRecords(run, day, hour) as record}
 					<div class={getRecordClasses(record)} style="left: {record.positionInHour * 100}%;">
 						
 					</div>
