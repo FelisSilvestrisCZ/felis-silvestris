@@ -67,8 +67,6 @@
 	width: 100%;
 	text-align: left;
 	table-layout: fixed;
-	font-family: 'Roboto', sans-serif;
-	//font-size: 10px;
 	border-collapse: collapse;
 	margin: 0.5em 0;
 	}
@@ -167,8 +165,6 @@
 		height: 100%;
 	}
 </style>
-
-{selectedRecord ? selectedRecord.id : 'No record selected'}
 
 {#each siteDetail.runs as run}
 <table class="run-table">

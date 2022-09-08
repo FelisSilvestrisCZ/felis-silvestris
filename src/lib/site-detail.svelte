@@ -14,14 +14,10 @@
 </script>
 
 <style>
-	body, html {
-		margin: 0;
-		padding: 0;
-	}
 	.site-detail {
-		padding: 2em 35vw 2em 2em;
+		padding: 2em;
 		background: #D1F5FF;
-		width: 64vw;
+		width: 70vw;
 	}
 	.toolbar {
 		position: fixed;

@@ -2,9 +2,10 @@
 	import { page } from '$app/stores';
 	import SiteDetail from '$lib/site-detail.svelte';
 
-	let campaignId = $page.params.campaignId;
-	let siteId = $page.params.siteId;
+	export let campaignId = $page.params.campaignId;
+	export let siteId = $page.params.siteId;
 </script>
 
-<SiteDetail campaignId={campaignId} siteId={siteId} />
+{siteId}
+<SiteDetail bind:campaignId={campaignId} bind:siteId={siteId} />
 

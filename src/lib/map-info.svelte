@@ -85,7 +85,7 @@
 		</div>
 		{/if}
 		{/if}
-		<IconButton href={'/' + campaignId + '/site/' + pointInfo.site.id} class="material-icons">arrow_forward</IconButton>
+		<IconButton href="/{campaignId}/site/{pointInfo.site.id}" class="material-icons">arrow_forward</IconButton>
 
 {/if}
 {:catch error}
