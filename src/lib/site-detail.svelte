@@ -1,5 +1,6 @@
 <script>
 	import SiteMap from '$lib/site-map.svelte';
+	import SiteHeatmap from '$lib/site-heatmap.svelte';
 	
 	export let campaignId;
 	export let siteId;
@@ -13,41 +14,25 @@
 </script>
 
 <style>
-	.heatmap {
-		background: gray;
+	body, html {
+		margin: 0;
+		padding: 0;
+	}
+	.site-detail {
+		padding: 2em;
+		background: #D1F5FF;
 	}
 </style>
-
-<img class="heatmap" src={'https://95.82.163.85:800/api/campaign/' + campaignId + '/site/' + siteId + '/heatmap'} />
 
 {#await fetchSiteDetail}
 <p>...waiting</p>
 {:then}
-<h1>Site {siteDetail.site.name} </h1>
-<table>
-	<thead>
-		<tr>	
-			<th>Id</th>
-		</tr>
-	</thead>
-	<tbody>
-		{#each siteDetail.records as record}
-		<tr>
-			<td>{record.id}</td>
-			<td>{record.dateTime}</td>
-			<td>{record.contentType}</td>
-			<td>
-				{#each record.tags as tag}
-					<span class="tag">#{tag}</span>
-				{/each}
-			</td>
-		</tr>
-		{/each}
-	</tbody>
-</table>
+<div class="site-detail">
+	<h1>Site {siteDetail.site.name}</h1>
+	<p>{siteDetail.site.description}</p>
+	<SiteHeatmap siteDetail={siteDetail} />
+</div>
 {:catch error}
 <p>An error occurred!</p>
 {/await}
 
-
-<SiteMap campaignId={campaignId} siteId={siteId} />

@@ -40,7 +40,6 @@
 			<IconButton href="./{campaign.id}/site/{site.id}" class="material-icons" size="16">
 				forward
 			</IconButton>
-			<img class="heatmap" src={'https://95.82.163.85:800/api/campaign/' + campaign.id + '/site/' + site.id + '/heatmap'} />
 		</td>
 		</tr>
 	{/each}
