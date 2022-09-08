@@ -4,8 +4,11 @@
 
 	export let campaignId = $page.params.campaignId;
 	export let siteId = $page.params.siteId;
+
+	$: siteId = $page.params.siteId;
 </script>
 
-{siteId}
+{#key siteId}
 <SiteDetail bind:campaignId={campaignId} bind:siteId={siteId} />
+{/key}
 
