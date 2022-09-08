@@ -8,7 +8,14 @@
 	$: siteId = $page.params.siteId;
 </script>
 
-{#key siteId}
-<SiteDetail bind:campaignId={campaignId} bind:siteId={siteId} />
-{/key}
+<style>
+	.site-detail-view {
+	padding: 2em;
+	}
+</style>
 
+<div class="site-detail-view">
+	{#key siteId}
+		<SiteDetail bind:campaignId={campaignId} bind:siteId={siteId} />
+	{/key}
+</div>

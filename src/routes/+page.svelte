@@ -1,5 +1,5 @@
 <script>
-	import { goto } from '$app/navigation';
+	
 
 	import IntroSpinner from '$lib/intro-spinner.svelte'
 

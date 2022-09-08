@@ -1,6 +1,3 @@
-<script>
-</script>
-
 <svelte:head>
 	<!-- Mapy.CZ API -->
 	<script src="https://api.mapy.cz/loader.js"></script>
@@ -26,10 +23,11 @@
 		html, body {
 		background-color: #D1F5FF;
 		border: 0;
-		padding: 0;
 		margin: 0;
+		padding: 0;
 		}
 	</style>
 </svelte:head>
+
 <slot></slot>
 

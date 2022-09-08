@@ -1,9 +1,13 @@
 <script>
+	import { goto } from '$app/navigation';
+
 	import SegmentedButton, {
 	Segment,
 	Icon,
 	Label,
 	} from '@smui/segmented-button';
+
+	export let campaignId;
 
 	const views = [
 	{
@@ -15,26 +19,24 @@
 	icon: 'map',
 	},
 	{
-	name: 'campaign',
-	icon: 'list',
+	name: 'site',
+	icon: 'place',
 	},
 	{
 	name: 'results',
 	icon: 'bar_chart',
 	},
-	{
-	name: 'records',
-	icon: 'camera',
-	},
 	];
 
-	export let selectedView = views[0];
+	let selectedView = views[0];
 </script>
 
 <style>
-
+	.view-switch {
+	position: fixed; z-index: 20; top: 2em; right: 2em; background-color: rgba(0,0,0, 0.5); border-radius: 6px; --mdc-segmented-button-unselected-container-fill-color: rgba(0, 0, 0, 0.5);	
+	}
 </style>
-<div style="position: fixed; z-index: 10; top: 2em; right: 2em; background-color: rgba(0,0,0, 0.5); border-radius: 6px; --mdc-segmented-button-unselected-container-fill-color: rgba(0, 0, 0, 0.5);"> 
+<div class="view-switch"> 
 <SegmentedButton style="display: block;"
     segments={views}
     let:segment
@@ -42,7 +44,7 @@
     bind:selected={selectedView}
     key={(segment) => segment.name}
   >
-    <Segment {segment} title={segment.name}>
+    <Segment {segment} title={segment.name} on:click={() => goto('/'+campaignId+'/'+segment.name)}  >
 		<Icon class="material-icons" height="auto" style="color: skyblue;">
 			{segment.icon}
 		</Icon>

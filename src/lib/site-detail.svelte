@@ -1,5 +1,4 @@
 <script>
-	import CampaignMap from '$lib/campaign-map.svelte';
 	import SiteHeatmap from '$lib/site-heatmap.svelte';
 	
 	export let campaignId;
@@ -12,25 +11,6 @@
 	return await response.json()
 	})().then(r => siteDetail = r);
 </script>
-
-<style>
-	.site-detail {
-		padding: 2em;
-		background: #D1F5FF;
-		width: 70vw;
-	}
-	.toolbar {
-		position: fixed;
-		right: 0;
-		top: 0;
-		max-width: 30vw;
-		z-index:10;
-	}
-</style>
-
-<div class="toolbar">
-	<CampaignMap campaignId={campaignId} />
-</div>
 
 {#await fetchSiteDetail}
 <p>...waiting</p>

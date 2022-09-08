@@ -80,7 +80,7 @@
 		<label>IN PROGRESS</label>{pointInfo.runInProgress.name} {pointInfo.runInProgress.catbox.name}
 		{#if pointInfo.lastEradicateApplicationDate}
 		<div class="eradicate">
-		<img src="eradicate-logo-for-dark-bkg-300pxw.png" />
+		<img src="/eradicate-logo-for-dark-bkg-300pxw.png" />
 		{pointInfo.lastEradicateApplicationDate.substring(0, pointInfo.lastEradicateApplicationDate.indexOf('T'))}
 		</div>
 		{/if}
