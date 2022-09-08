@@ -34,6 +34,8 @@
 	font-weight: 500;
 	display: block;
 	margin-top: 0.5em;
+	font-size: 12px;
+	line-height: 12px;
 	}
 
 	label:first-child {
@@ -43,10 +45,10 @@
 	span.eradicate {
 	color: palegoldenrod;
 	}
-	
+
 	.eradicate img {
-		width: 100%;
-		margin-top: 1em;
+	width: 100%;
+	margin-top: 1em;
 	}
 </style>
 
@@ -85,7 +87,6 @@
 		</div>
 		{/if}
 		{/if}
-		<IconButton href="/{campaignId}/site/{pointInfo.site.id}" class="material-icons">arrow_forward</IconButton>
 
 {/if}
 {:catch error}

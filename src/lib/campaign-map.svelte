@@ -1,5 +1,5 @@
 <script>
-	import Map from './map.svelte'
+	import Map from '$lib/map.svelte'
 	import InfoRibbon from '$lib/info-ribbon.svelte'
 	import MapInfo from '$lib/map-info.svelte'
 
@@ -7,9 +7,14 @@
 
 	let map;
 	let clickLatLon;
+	let pointInfo;
+	
+	export let selectedSite;
+	
+	$: selectedSite = pointInfo?.site; 
 
 	let handleMapClick = ((m, lat, lon) => {
-	clickLatLon = {latitude: lat, longitude: lon};
+		clickLatLon = {latitude: lat, longitude: lon};
 	});
 
 	let fetchMap = (async () => {
@@ -32,7 +37,7 @@
 <p>An error occurred!</p>
 {/await}
 <InfoRibbon>
-	<MapInfo bind:campaignId={campaignId} bind:point={clickLatLon} />
+	<MapInfo bind:campaignId={campaignId} bind:point={clickLatLon} bind:pointInfo={pointInfo} />
 </InfoRibbon>
 
 

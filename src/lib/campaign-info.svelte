@@ -15,6 +15,8 @@
 	font-weight: 500;
 	display: block;
 	margin-top: 0.5em;
+	font-size: 12px;
+	line-height: 12px;
 	}
 
 	label:first-child {

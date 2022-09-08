@@ -1,5 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	import SegmentedButton, {
 	Segment,
@@ -37,20 +38,20 @@
 	}
 </style>
 <div class="view-switch"> 
-<SegmentedButton style="display: block;"
+	<SegmentedButton style="display: block;"
     segments={views}
     let:segment
     singleSelect
     bind:selected={selectedView}
-    key={(segment) => segment.name}
-  >
-    <Segment {segment} title={segment.name} on:click={() => goto('/'+campaignId+'/'+segment.name)}  >
+    key={(segment) => segment.name}>
+    <Segment {segment} title={segment.name} on:click={goto('/' + campaignId + '/' + segment.name + ($page.params.siteId ? ('/' + $page.params.siteId) : ''))} >
 		<Icon class="material-icons" height="auto" style="color: skyblue;">
 			{segment.icon}
 		</Icon>
     </Segment>
   </SegmentedButton>
 </div>
+
 
 
 
