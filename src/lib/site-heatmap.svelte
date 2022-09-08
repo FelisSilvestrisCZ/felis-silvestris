@@ -1,6 +1,9 @@
 <script>
 	export let siteDetail;
 	
+	let selectedRecord = null;
+	let selectedRecordElement = null;
+	
 	const hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
 
 	function days(run) {
@@ -44,6 +47,18 @@
 		var classes = "record";
 		record.tags.forEach (tag => classes += ' ' + tag);	
 		return classes;	
+	}
+	
+	let recordSource;
+
+	function selectRecord(e, record) {
+		if (selectedRecordElement) {
+			selectedRecordElement.classList.remove('selected');
+		}
+		recordSource = "https://95.82.163.85:800/api/record/" + record.id + "/source";
+		selectedRecord = record;
+		selectedRecordElement = e.target;
+		selectedRecordElement.classList.add('selected');
 	}
 </script>
 
@@ -94,9 +109,14 @@
 	td.in-progress {
 	background: lightpink;
 	}
+	
+	a.selected {
+		border: 2px solid yellow;
+	}
 
-	.record {
-	width: 33%;
+	a.record {
+	display: block;
+	width: 25%;
 	height: 100%;
 	background: darkgray;
 	position: absolute;
@@ -133,8 +153,22 @@
 	.record.no-animal {
 	background: darkgray;
 	}
-
+	
+	.context-bar {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		height: 50vh;
+		z-index: 10;
+	}
+	
+	.context-bar .preview {
+		width: auto;
+		height: 100%;
+	}
 </style>
+
+{selectedRecord ? selectedRecord.id : 'No record selected'}
 
 {#each siteDetail.runs as run}
 <table class="run-table">
@@ -159,9 +193,9 @@
 				<td class={getHourClasses(run, day, hour)}>
 					{hour}
 					{#each getRecords(run, day, hour) as record}
-					<div class={getRecordClasses(record)} style="left: {record.positionInHour * 100}%;">
+					<a class={getRecordClasses(record)} style="left: {record.positionInHour * 100}%;" on:click={(e) => selectRecord(e, record)}>
 						
-					</div>
+					</a>
 					{/each}
 				</td>
 				{/each}
@@ -171,4 +205,17 @@
 </table>
 {/each}
 
+{#if selectedRecord}
+<div class="context-bar">
+	{#key recordSource}
+	{#if selectedRecord.contentType.startsWith('video/')}
+	<video class="preview" autoplay controls muted loop>
+		<source src={recordSource} type={selectedRecord.contentType} />
+	</video>
+	{:else}
+	<img class ="preview" src={recordSource} />
+	{/if}
+	{/key}
+</div>
+{/if}
 
