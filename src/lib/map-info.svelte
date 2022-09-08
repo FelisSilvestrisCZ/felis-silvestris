@@ -1,9 +1,11 @@
 <script>
+	import IconButton from '@smui/icon-button';
+
 	export let campaignId = null;
 	export let point = null;
-	
+
 	let areaInfo = null;
-	let pointInfo = null;
+	export let pointInfo = null;
 	let isPointInfoVisible = false;
 
 	let fetchPointInfo;
@@ -83,6 +85,7 @@
 		</div>
 		{/if}
 		{/if}
+		<IconButton href={'/' + campaignId + '/site/' + pointInfo.site.id} class="material-icons">arrow_forward</IconButton>
 
 {/if}
 {:catch error}

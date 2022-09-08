@@ -11,6 +11,6 @@
 		}
 	</style>
 </svelte:head>
-
+Kokoslot
 <slot></slot>
 

@@ -1,5 +1,5 @@
 <script>
-	import SiteMap from '$lib/site-map.svelte';
+	import CampaignMap from '$lib/campaign-map.svelte';
 	import SiteHeatmap from '$lib/site-heatmap.svelte';
 	
 	export let campaignId;
@@ -19,10 +19,22 @@
 		padding: 0;
 	}
 	.site-detail {
-		padding: 2em;
+		padding: 2em 35vw 2em 2em;
 		background: #D1F5FF;
+		width: 64vw;
+	}
+	.toolbar {
+		position: fixed;
+		right: 0;
+		top: 0;
+		max-width: 30vw;
+		z-index:10;
 	}
 </style>
+
+<div class="toolbar">
+	<CampaignMap campaignId={campaignId} />
+</div>
 
 {#await fetchSiteDetail}
 <p>...waiting</p>
