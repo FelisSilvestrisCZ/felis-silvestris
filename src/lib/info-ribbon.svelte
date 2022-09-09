@@ -6,7 +6,7 @@
 	position: fixed;
 	right: 2em;
 	top: 5em;
-	background: rgba(0,0,0,0.2);
+	background: rgba(0,0,0,0.3);
 	padding: 0.7em 1.1em;
 	text-transform: uppercase;
 	color: skyblue;
@@ -14,6 +14,7 @@
 	border-radius: 4px;
 	color: white;
 	width: 12.25em;
+	text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
 	}
 </style>
 
