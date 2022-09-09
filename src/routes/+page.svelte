@@ -10,7 +10,7 @@
 {#if !campaignId}
 	<IntroSpinner bind:campaignId={campaignId} />
 {:else}
-	{#await goto('/' + campaignId)}
+	{#await goto('/' + campaignId + '/movies')}
 	{/await}
 {/if}
 

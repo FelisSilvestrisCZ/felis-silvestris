@@ -1,4 +1,7 @@
 <script>
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
+	
 	import Map from '$lib/map.svelte'
 	import InfoRibbon from '$lib/info-ribbon.svelte'
 	import MapInfo from '$lib/map-info.svelte'
@@ -8,10 +11,10 @@
 	let map;
 	let clickLatLon;
 	let pointInfo;
-	
-	export let selectedSite;
-	
-	$: selectedSite = pointInfo?.site; 
+
+	export let selectedSite = null;
+
+	$: selectedSite = pointInfo?.site;
 
 	let handleMapClick = ((m, lat, lon) => {
 		clickLatLon = {latitude: lat, longitude: lon};
@@ -39,5 +42,9 @@
 <InfoRibbon>
 	<MapInfo bind:campaignId={campaignId} bind:point={clickLatLon} bind:pointInfo={pointInfo} />
 </InfoRibbon>
+{#if pointInfo?.site}
+	{#await goto('/' + campaignId + '/map/' + pointInfo.site.id)}
+	{/await}
+{/if}
 
 
