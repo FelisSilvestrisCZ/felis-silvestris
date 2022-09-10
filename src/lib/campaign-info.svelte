@@ -18,14 +18,8 @@
 	<InfoRibbonItem>
 		<span slot="label">Campaign</span>
 		<span slot="value">
-			{info.campaignName}
-		</span>
-	</InfoRibbonItem>
-
-	<InfoRibbonItem>
-		<span slot="label">When</span>
-		<span slot="value">
-			{info.from.substring(0, info.from.indexOf('T'))}<br/>
+			{info.campaignName}<br/>
+			Start {info.from.substring(0, info.from.indexOf('T'))}<br/>
 			In progress
 		</span>
 	</InfoRibbonItem>

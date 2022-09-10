@@ -3,16 +3,16 @@
 
 <style>
 	.info-ribbon {
-	position: fixed;
-	right: 0;
-	top: 0;
-	background: #92abb2;
-	padding: 6em 2em 2em 2em;
-	z-index: 1;
-	color: #d1f5ff;
-	min-width: 12.25em;
-	justify-content: right;
-	display: flex;
+		position: fixed;
+		right: 0;
+		top: 0;
+		background: #92abb2;
+		padding: 6em 2em 2em 2em;
+		z-index: 1;
+		color: #d1f5ff;
+		min-width: 16.5em;
+		justify-content: center;
+		display: flex;
 	}
 
 	.info-ribbon table.values {

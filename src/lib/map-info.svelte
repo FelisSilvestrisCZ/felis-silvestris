@@ -33,12 +33,7 @@
 	<InfoRibbonItem>
 		<span slot="label">Area</span>
 		<span slot="value">
-			{Math.round(areaInfo.area.width/100)/10}&times;{Math.round(areaInfo.area.height/100)/10}={Math.round(areaInfo.area.height*areaInfo.area.width/1e6*10)/10}&nbsp;km<sup>2</sup>
-		</span>
-	</InfoRibbonItem>	
-	<InfoRibbonItem>
-		<span slot="label">Observation</span>
-		<span slot="value">
+			{Math.round(areaInfo.area.width/100)/10}&times;{Math.round(areaInfo.area.height/100)/10}={Math.round(areaInfo.area.height*areaInfo.area.width/1e6*10)/10}&nbsp;km<sup>2</sup><br/>
 			{Math.round(areaInfo.totalObservationDays * 10)/10}&nbsp;days<br/>{areaInfo.sitesCount}&nbsp;sites
 		</span>
 	</InfoRibbonItem>	
@@ -52,16 +47,15 @@
 	{#if isPointInfoVisible}
 	<InfoRibbonItem>
 		<span slot="label">Site</span>
-		<span slot="value">{pointInfo.site.name}</span>
+		<span slot="value">
+			{pointInfo.site.name}
+			{#if pointInfo.score}
+			<br/>{Math.round(pointInfo.score.durationInDays * 10)/10} days
+			{/if}
+		</span>
 	</InfoRibbonItem>
 
-	{#if pointInfo.score}
-	<InfoRibbonItem>
-		<span slot="label">Observation</span>
-		<span slot="value">{Math.round(pointInfo.score.durationInDays * 10)/10} days</span>
-	</InfoRibbonItem>
-	
-	{#if pointInfo.score.scores['Cat'].score}
+	{#if pointInfo?.score?.scores['Cat']?.score}
 	<InfoRibbonItem>
 		<span slot="label">Cat</span>
 		<span slot="value">
@@ -71,13 +65,14 @@
 		</span>
 	</InfoRibbonItem>
 	{/if}
-	{/if}
 		
 	{#if pointInfo.isInProgress}
 	<InfoRibbonItem>
 		<span slot="label">In progress</span>
 		<span slot="value">
-			{pointInfo.runInProgress.name} {pointInfo.runInProgress.catbox.name}
+			{pointInfo.runInProgress.name} {pointInfo.runInProgress.catbox.name}<br/>
+			{pointInfo.runInProgress.from.substring(0, pointInfo.runInProgress.from.indexOf('T'))}<br/>
+			{pointInfo.runInProgress.duration.substring(0, pointInfo.runInProgress.duration.indexOf('.') + 2)} days
 		</span>
 	</InfoRibbonItem>
 	{/if}
