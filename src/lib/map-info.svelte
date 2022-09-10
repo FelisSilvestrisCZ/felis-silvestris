@@ -61,7 +61,7 @@
 		<span slot="value">
 			each {Math.round(1 / pointInfo.score.scores['Cat'].score / 2.4)/10}&nbsp;days<br/>
 			seen for {Math.round(pointInfo.score.scores['Cat'].hoursWithAnimal)}&nbsp;hrs<br/>
-			{Math.round(24 * 19.89 * pointInfo.score.scores['Cat'].score)/10}&nbsp;cats/km<sup>2</sup>	
+			{Math.round(24 * 19.89 * pointInfo.score.scores['Cat'].score)/10}&nbsp;cat/km<sup>2</sup>	
 		</span>
 	</InfoRibbonItem>
 	{/if}

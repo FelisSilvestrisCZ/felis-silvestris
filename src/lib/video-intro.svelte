@@ -6,16 +6,20 @@
 
 	let videosPlayed = Math.floor(Math.random() * 10000);
 	let source = "https://localhost:800/api/campaign/" + campaignId + "/intro-video/" + videosPlayed;
-	let campaignUrl;
-	let comparisonUrl;
+	let fp = fetchIntroRecord().then(r => introRecord = r);
+	let introRecord;
+
+	async function fetchIntroRecord() {
+	const response = await fetch(source);
+	return await response.json();
+	};
 
 	function handleEnded(e) {
-		videosPlayed = Math.floor(Math.random() * 10000);
+	videosPlayed = Math.floor(Math.random() * 10000);
+	fp = fetchIntroRecord().then(r => introRecord = r);
 	}
 
 	$: source = "https://localhost:800/api/campaign/" + campaignId + "/intro-video/" + videosPlayed;
-	$: campaignUrl = './campaign/' + campaignId;
-	$: comparisonUrl = './comparison/' + campaignId;
 </script>
 
 <style>
@@ -33,12 +37,13 @@
 	}
 </style>
 
-
-	{#key source}
+{#await fp}
+{:then}
 	<video autoplay controls on:ended={handleEnded} >
-		<source src={source} type="video/mp4"/>
+		<source src={'https://localhost:800/api/record/' + introRecord.id + '/source'} type={introRecord.contentType} />
 	</video>
-	{/key}
-	<InfoRibbon>
-		<CampaignInfo bind:campaignId={campaignId} />
-	</InfoRibbon>
+{/await}
+
+<InfoRibbon>
+	<CampaignInfo bind:campaignId={campaignId} bind:record={introRecord} />
+</InfoRibbon>
