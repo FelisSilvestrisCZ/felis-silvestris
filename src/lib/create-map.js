@@ -18,7 +18,7 @@ export default function createMap(data, clickHandler) {
 		var leftTop = SMap.Coords.fromWGS84(overlay.geoRect.min.longitude, overlay.geoRect.max.latitude);
 		var rightBottom = SMap.Coords.fromWGS84(overlay.geoRect.max.longitude, overlay.geoRect.min.latitude);
 
-		vrstva.addImage("https://95.82.163.85:800/api/campaign/3c2ea8b0-b612-42f5-8b00-f2c628d8098b/" + overlay.imageUrl, leftTop, rightBottom);
+		vrstva.addImage("https://localhost:800/api/campaign/3c2ea8b0-b612-42f5-8b00-f2c628d8098b/" + overlay.imageUrl, leftTop, rightBottom);
 	});
 
 	var coords = [];

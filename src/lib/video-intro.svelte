@@ -5,7 +5,7 @@
 	export let campaignId = null;
 
 	let videosPlayed = Math.floor(Math.random() * 10000);
-	let source = "https://95.82.163.85:800/api/campaign/" + campaignId + "/intro-video/" + videosPlayed;
+	let source = "https://localhost:800/api/campaign/" + campaignId + "/intro-video/" + videosPlayed;
 	let campaignUrl;
 	let comparisonUrl;
 
@@ -13,7 +13,7 @@
 		videosPlayed = Math.floor(Math.random() * 10000);
 	}
 
-	$: source = "https://95.82.163.85:800/api/campaign/" + campaignId + "/intro-video/" + videosPlayed;
+	$: source = "https://localhost:800/api/campaign/" + campaignId + "/intro-video/" + videosPlayed;
 	$: campaignUrl = './campaign/' + campaignId;
 	$: comparisonUrl = './comparison/' + campaignId;
 </script>

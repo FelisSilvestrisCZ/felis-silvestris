@@ -6,7 +6,7 @@
 
 	export let campaignId = null;
 	let fetchCampaignRecords = (async () => {
-	const response = await fetch('https://95.82.163.85:800/api/campaign/' + campaignId + '/record')
+	const response = await fetch('https://localhost:800/api/campaign/' + campaignId + '/record')
 	return await response.json()
 	})().then(r => campaignRecords = r);
 
@@ -67,7 +67,7 @@
     {#each slice as item (item.id)}
 			<div class="record">
 			<video controls>
-				<source src={'https://95.82.163.85:800/api/record/' + item.id + '/source'} />
+				<source src={'https://localhost:800/api/record/' + item.id + '/source'} />
 			</video>
 				<div class="record-info">{item.siteName} {formatDatetime(item.dateTime)}</div>
 			</div>

@@ -6,7 +6,7 @@
 	let fetchedId;
 
 	let fetchCampaignId = (async () => {
-	const response = await fetch('https://95.82.163.85:800/api/campaign')
+	const response = await fetch('https://localhost:800/api/campaign')
 	return await response.json()
 	})().then(r => fetchedId = r[0].id);
 </script>

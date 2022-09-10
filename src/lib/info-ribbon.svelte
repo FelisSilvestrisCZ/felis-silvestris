@@ -4,20 +4,27 @@
 <style>
 	.info-ribbon {
 	position: fixed;
-	right: 2em;
-	top: 5em;
-	background: rgba(0,0,0,0.3);
-	padding: 0.7em 1.1em;
-	text-transform: uppercase;
-	color: skyblue;
+	right: 0;
+	top: 0;
+	background: #92abb2;
+	padding: 6em 2em 2em 2em;
 	z-index: 1;
-	border-radius: 4px;
-	color: white;
-	width: 12.25em;
-	text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+	color: #d1f5ff;
+	min-width: 12.25em;
+	justify-content: right;
+	display: flex;
+	}
+
+	.info-ribbon table.values {
+		border-spacing: 0 0.5em;
+		border-collapse: separate;
 	}
 </style>
 
 <div class="info-ribbon">
-	<slot />
+	<div class="content">
+		<table class="values">
+			<slot />
+		</table>
+	</div>
 </div>

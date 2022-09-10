@@ -10,15 +10,15 @@
 	let index;
 
 	let fetchPairs = (async () => {
-	const response = await fetch('https://95.82.163.85:800/api/campaign/' + campaignId + '/individual/pairs-for-comparison')
+	const response = await fetch('https://localhost:800/api/campaign/' + campaignId + '/individual/pairs-for-comparison')
 	return await response.json()
 	})().then(r => {
 		pairs = r;
 		index = 0;
 		record1 = pairs[index].record1; 
 		record2 = pairs[index].record2; 
-		source1 = "https://95.82.163.85:800/api/record/" + record1.id + "/source"; 
-		source2 = "https://95.82.163.85:800/api/record/" + record2.id + "/source";
+		source1 = "https://localhost:800/api/record/" + record1.id + "/source"; 
+		source2 = "https://localhost:800/api/record/" + record2.id + "/source";
 		}
 	);
 	
@@ -27,8 +27,8 @@
 		record1 = pairs[index].record1; 
 		record2 = pairs[index].record2; 
 		console.log(record1.id);
-		source1 = "https://95.82.163.85:800/api/record/" + record1.id + "/source"; 
-		source2 = "https://95.82.163.85:800/api/record/" + record2.id + "/source";
+		source1 = "https://localhost:800/api/record/" + record1.id + "/source"; 
+		source2 = "https://localhost:800/api/record/" + record2.id + "/source";
 	}
 
 </script>

@@ -55,7 +55,7 @@
 		if (selectedRecordElement) {
 			selectedRecordElement.classList.remove('selected');
 		}
-		recordSource = "https://95.82.163.85:800/api/record/" + record.id + "/source";
+		recordSource = "https://localhost:800/api/record/" + record.id + "/source";
 		selectedRecord = record;
 		selectedRecordElement = e.target;
 		selectedRecordElement.classList.add('selected');

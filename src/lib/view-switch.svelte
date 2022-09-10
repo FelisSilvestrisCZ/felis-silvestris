@@ -34,7 +34,13 @@
 
 <style>
 	.view-switch {
-	position: fixed; z-index: 20; top: 2em; right: 2em; background-color: rgba(0,0,0, 0.5); border-radius: 6px; --mdc-segmented-button-unselected-container-fill-color: rgba(0, 0, 0, 0.5);	
+	position: fixed;
+	z-index: 20;
+	top: 2em;
+	right: 2em;
+	background-color: transparent;
+	border-radius: 0px;
+	--mdc-segmented-button-unselected-container-fill-color: rgba(0, 0, 0, 0.5);
 	}
 </style>
 <div class="view-switch"> 
@@ -45,7 +51,7 @@
     bind:selected={selectedView}
     key={(segment) => segment.name}>
     <Segment {segment} title={segment.name} on:click={goto('/' + campaignId + '/' + segment.name + ($page.params.siteId ? ('/' + $page.params.siteId) : ''))} >
-		<Icon class="material-icons" height="auto" style="color: skyblue;">
+		<Icon class="material-icons" height="auto">
 			{segment.icon}
 		</Icon>
     </Segment>

@@ -21,10 +21,28 @@
 	
 	<style>
 		html, body {
-		background-color: #D1F5FF;
+		background-color: #b2d0d9;
+		color: #1f2526;
 		border: 0;
 		margin: 0;
 		padding: 0;
+		/*font-family: 'Kanit';*/
+		/*font-weight: 300;*/
+		}
+
+		.mdc-segmented-button__segment {
+		border: 0;
+		background: transparent;
+		color: #d1f5ff;
+		border-radius: 0 !important;
+		}
+
+		.mdc-segmented-button__icon {
+		font-size: 24px;
+		}
+
+		.mdc-segmented-button__segment--selected {
+		border-bottom: 0.25em solid !important;
 		}
 	</style>
 </svelte:head>

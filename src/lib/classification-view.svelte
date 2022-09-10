@@ -8,7 +8,7 @@
 $:	currentRecordId = records ? records[currentIndex] : null;
 
 	const fetchRecords = (async () => {
-	const response = await fetch('https://95.82.163.85:800/api/animals/not-classified')
+	const response = await fetch('https://localhost:800/api/animals/not-classified')
 	return await response.json()
 	});
 

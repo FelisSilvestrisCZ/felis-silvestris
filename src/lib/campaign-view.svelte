@@ -12,7 +12,7 @@
 	let active = 'Runs';
 
 	let fetchDefinition = (async () => {
-	const response = await fetch('https://95.82.163.85:800/api/campaign/' + campaignId + '/definition')
+	const response = await fetch('https://localhost:800/api/campaign/' + campaignId + '/definition')
 	return await response.json()
 	})().then(r => campaign = r);
 </script>

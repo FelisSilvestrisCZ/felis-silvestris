@@ -7,7 +7,7 @@
 	let animals = null;
 
 	const fetchAnimals = (async () => {
-	const response = await fetch('https://95.82.163.85:800/api/animals/' + recordId)
+	const response = await fetch('https://localhost:800/api/animals/' + recordId)
 	return await response.json()
 	});
 
@@ -18,7 +18,7 @@
 	}
 
 	async function postAnimals () {
-	const res = await fetch('https://95.82.163.85:800/api/animals/' + recordId, {
+	const res = await fetch('https://localhost:800/api/animals/' + recordId, {
 	method: 'POST',
 	headers: {
 	'Content-Type': 'application/json'

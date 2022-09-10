@@ -11,7 +11,7 @@
 
 	async function fetchPoint(p) {
 	if (p && campaignId) {
-	const response = await fetch('https://95.82.163.85:800/api/campaign/' + campaignId + '/map/' + p[1] + '/' + p[0])
+	const response = await fetch('https://localhost:800/api/campaign/' + campaignId + '/map/' + p[1] + '/' + p[0])
 	return await response.json();
 	} else {
 	return null;

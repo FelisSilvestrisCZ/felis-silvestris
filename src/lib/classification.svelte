@@ -7,11 +7,11 @@
 
 	let sourceUrl = null;
 
-	$: sourceUrl = 'https://95.82.163.85:800/api/record/' + recordId + '/source';
+	$: sourceUrl = 'https://localhost:800/api/record/' + recordId + '/source';
 	$: reload(recordId);
 
 	async function fetchRecord() {
-	const response = await fetch('https://95.82.163.85:800/api/record/' + recordId);
+	const response = await fetch('https://localhost:800/api/record/' + recordId);
 	return await response.json();
 	};
 
