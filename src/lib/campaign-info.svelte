@@ -20,7 +20,7 @@
 		<span slot="label">Campaign</span>
 		<span slot="value">
 			{info.campaignName}<br/>
-			Start {info.from.substring(0, info.from.indexOf('T'))}<br/>
+			start {info.from.substring(0, info.from.indexOf('T'))}<br/>
 			in progress
 		</span>
 	</InfoRibbonItem>
