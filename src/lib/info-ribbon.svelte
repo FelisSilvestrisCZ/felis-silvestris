@@ -13,12 +13,15 @@
 		color: #d1f5ff;
 		min-width: 15.5em;
 		justify-content: center;
-		display: flex;
 	}
 
 	.info-ribbon table.values {
 		border-spacing: 0 0.5em;
 		border-collapse: separate;
+	}
+	
+	.context-actions {
+		text-align: right;
 	}
 </style>
 
@@ -27,5 +30,8 @@
 		<table class="values">
 			<slot />
 		</table>
+	</div>
+	<div class="context-actions">
+		<slot name="context-actions" />
 	</div>
 </div>

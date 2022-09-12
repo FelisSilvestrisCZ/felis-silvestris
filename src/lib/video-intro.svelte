@@ -1,6 +1,7 @@
 <script>
 	import InfoRibbon from '$lib/info-ribbon.svelte'
 	import CampaignInfo from '$lib/campaign-info.svelte'
+	import IconButton from '@smui/icon-button';
 
 	export let campaignId = null;
 
@@ -15,11 +16,10 @@
 	};
 
 	function handleEnded(e) {
-	videosPlayed = Math.floor(Math.random() * 10000);
-	fp = fetchIntroRecord().then(r => introRecord = r);
+		videosPlayed = Math.floor(Math.random() * 10000);
+		source = "https://localhost:800/api/campaign/" + campaignId + "/intro-video/" + videosPlayed;
+		fp = fetchIntroRecord().then(r => introRecord = r);
 	}
-
-	$: source = "https://localhost:800/api/campaign/" + campaignId + "/intro-video/" + videosPlayed;
 </script>
 
 <style>
@@ -46,4 +46,7 @@
 
 <InfoRibbon>
 	<CampaignInfo bind:campaignId={campaignId} bind:record={introRecord} />
+	<div slot="context-actions">
+		<IconButton on:click={() => handleEnded()} class="material-icons">arrow_forward</IconButton>
+	</div>
 </InfoRibbon>

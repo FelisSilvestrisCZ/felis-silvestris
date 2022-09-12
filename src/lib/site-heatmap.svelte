@@ -167,7 +167,7 @@
 	right: 2em;
 	height: 50vh;
 	z-index: 1;
-	opacity: 0.7;
+	//opacity: 0.7;
 	}
 
 	.context-bar .preview {
