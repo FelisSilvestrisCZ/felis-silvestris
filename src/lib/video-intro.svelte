@@ -47,6 +47,6 @@
 <InfoRibbon>
 	<CampaignInfo bind:campaignId={campaignId} bind:record={introRecord} />
 	<div slot="context-actions">
-		<IconButton on:click={() => handleEnded()} class="material-icons">arrow_forward</IconButton>
+		<IconButton on:click={() => handleEnded()} class="material-icons">navigate_next</IconButton>
 	</div>
 </InfoRibbon>

@@ -12,7 +12,8 @@ export default function createMap(data, clickHandler) {
 		console.log(JSON.stringify(overlay));
 		var vrstva = new SMap.Layer.Image();     /* Obrázková vrstva */
 		mapa.addLayer(vrstva);                      /* Pøidat ji do mapy */
-		vrstva.enable();                         /* A povolit */
+		if (index == 0)
+			vrstva.enable();                         /* A povolit */
 
 		/* Pøidat do vrstvy obrázek */
 		var leftTop = SMap.Coords.fromWGS84(overlay.geoRect.min.longitude, overlay.geoRect.max.latitude);
