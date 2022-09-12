@@ -1,18 +1,20 @@
 <script>
+	import IconButton from '@smui/icon-button';
+
 	export let siteDetail;
-	
+
 	let selectedRecord = null;
 	let selectedRecordElement = null;
-	
+
 	const hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
 
 	function days(run) {
-		var from = new Date(run.from);
-		var to = run.isInProgress ? new Date(Date.now()) : new Date(run.to);
-		from.setHours(0, 0, 0, 0);
-		to.setHours(0, 0, 0, 0);
-		var days = [];
-		for (let day = from; day <= to; day = new Date(day.getTime()+86400000)) {
+	var from = new Date(run.from);
+	var to = run.isInProgress ? new Date(Date.now()) : new Date(run.to);
+	from.setHours(0, 0, 0, 0);
+	to.setHours(0, 0, 0, 0);
+	var days = [];
+	for (let day = from; day <= to; day = new Date(day.getTime()+86400000)) {
 			days.push(day);
 		};
 		return days;
@@ -59,7 +61,10 @@
 		selectedRecord = record;
 		selectedRecordElement = e.target;
 		selectedRecordElement.classList.add('selected');
+		previewOpen = true;
 	}
+	
+	let previewOpen = false;
 </script>
 
 <style>
@@ -169,6 +174,15 @@
 	width: auto;
 	height: 100%;
 	}
+
+	.context-bar .actions {
+	text-align: right;
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: #d1f5ff;
+	z-index: 2;
+	}
 </style>
 
 {#each siteDetail.runs as run}
@@ -206,16 +220,19 @@
 </table>
 {/each}
 
-{#if selectedRecord}
+{#if selectedRecord && previewOpen}
 <div class="context-bar">
 	{#key recordSource}
-	{#if selectedRecord.contentType.startsWith('video/')}
-	<video class="preview" autoplay controls>
-		<source src={recordSource} type={selectedRecord.contentType} />
-	</video>
-	{:else}
-	<img class ="preview" src={recordSource} />
-	{/if}
+
+		<div class="actions"><IconButton class="material-icons" title="Close" on:click={e => previewOpen = false}>close</IconButton></div>
+		{#if selectedRecord.contentType.startsWith('video/')}
+		<video class="preview" autoplay controls>
+			<source src={recordSource} type={selectedRecord.contentType} />
+		</video>
+		{:else}
+		<img class ="preview" src={recordSource} />
+		{/if}
+
 	{/key}
 </div>
 {/if}
