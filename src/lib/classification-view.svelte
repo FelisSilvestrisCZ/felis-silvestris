@@ -25,6 +25,14 @@ $:	currentRecordId = records ? records[currentIndex] : null;
 		if (currentIndex < (records.length - 1)) currentIndex++;
 	}
 	
+	function rescan() {
+		fetch('https://localhost:800/api/record/rescan', {method: 'POST'})
+			.then(r => fp = fetchRecords().then(r => {
+				currentIndex = 0;
+				records = r;}
+			)); 
+	}
+	
 </script>
 
 <style>
@@ -46,13 +54,19 @@ $:	currentRecordId = records ? records[currentIndex] : null;
 {#await fp}
 <p>...waiting</p>
 {:then}
-<h4>
+
 	{#if records.length}
+	<h4>
 	{currentIndex + 1}/{records.length} {currentRecordId}
+	</h4>
 	{:else}
-	No unclassified records now
+	<h4>
+		No unclassified records now
+	</h4>
+	<p>
+		<a on:click={rescan}>Rescan for new records</a>
+	</p>
 	{/if}
-</h4>
 <Classification recordId={currentRecordId} />
 <ButtonGroup class="nav-buttons" unelevated color="primary">
     <Button unelevated on:click={onPrevious}>Previous</Button>
