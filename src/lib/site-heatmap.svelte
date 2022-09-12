@@ -70,99 +70,103 @@
 	border-collapse: collapse;
 	margin: 0.5em 0;
 	}
-	
+
 	thead {
-		margin: 0.25em 0;
+	margin: 0.25em 0;
 	}
 
 	th, td {
-		margin: 0;
-		padding: 0.25em 0.5em;
-		border: 0;
-		vertical-align: top;
+	color: #92abb2;
+	position: relative;
+	//border-bottom: 0.5px dotted;
+	text-align: left;
+	padding: 1.2em 0 0.8em 0;
 	}
+
 	th {
-		padding:0.5em;
+	color: #1f2526;
+	border-bottom: 0.5px solid;
+	padding: 0;
 	}
-	
+
 	th.name {
-		text-transform: uppercase;
+	text-transform: uppercase;
 	}
-	
+
 	th.note, th.id {
-		font-weight: normal;
+	font-weight: normal;
 	}
-	
+
 	td {
-	color: #d0d0d0;
-	border: 0.5px dotted #d0d0d0;
-	//border-right: 1px solid #d0d0d0;
 	position: relative;
 	}
 
 	td.outside {
-		color: transparent;
+	color: transparent;
 	}
-	
+
 	td.in-progress {
 	background: lightpink;
 	}
-	
+
 	a.selected {
-		border: 2px solid yellow;
+	border: 2px solid yellow;
+	z-index: 5;
 	}
 
 	a.record {
 	display: block;
-	width: 25%;
-	height: 100%;
+	width: 20%;
+	height: 90%;
 	background: darkgray;
 	position: absolute;
-	top: 0;
+	bottom: 0;
 	left: 50%;
-	opacity: 0.8;
-	z-index: 2;
+	//opacity: 0.8;
+	z-index: 1;
+	border-radius: 2em;
 	}
 
 	.record.cat {
-	background: skyblue;
+	background: rgb(209, 244, 255);
 	}
 
 	.record.fox {
-	background: red;
+	background: rgb(255, 212, 209);
 	}
 
 	.record.mouse {
-	background: brown;
+	background: rgb(252, 255, 209);
 	}
 
 	.record.hedgehog {
-	background: green;
+	background: rgb(209, 255, 212);
 	}
 
 	.record.bird {
-	background: orange;
+	background: rgb(220, 209, 255);
 	}
 
 	.record.other-animal {
-	background: magenta;
+	background: rgb(255, 209, 244);
 	}
 
 	.record.no-animal {
-	background: darkgray;
+	background: #92abb2;
 	}
-	
+
 	.context-bar {
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		height: 50vh;
-		z-index: 10;
+	position: fixed;
+	bottom: 2em;
+	right: 2em;
+	height: 50vh;
+	z-index: 1;
+	opacity: 0.7;
 	}
-	
+
 	.context-bar .preview {
-		width: auto;
-		height: 100%;
+	width: auto;
+	height: 100%;
 	}
 </style>
 
@@ -205,7 +209,7 @@
 <div class="context-bar">
 	{#key recordSource}
 	{#if selectedRecord.contentType.startsWith('video/')}
-	<video class="preview" autoplay controls muted loop>
+	<video class="preview" autoplay controls>
 		<source src={recordSource} type={selectedRecord.contentType} />
 	</video>
 	{:else}

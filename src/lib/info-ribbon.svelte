@@ -1,4 +1,5 @@
 <script>
+
 </script>
 
 <style>
@@ -10,7 +11,7 @@
 		padding: 6em 2em 2em 2em;
 		z-index: 1;
 		color: #d1f5ff;
-		min-width: 16.5em;
+		min-width: 15.5em;
 		justify-content: center;
 		display: flex;
 	}

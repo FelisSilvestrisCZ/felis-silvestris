@@ -35,6 +35,7 @@ $:	currentRecordId = records ? records[currentIndex] : null;
 
 	.classification-view {
 	text-align: center;
+	margin: 2em;
 	}
 	
 	.nav-buttons {
@@ -45,7 +46,13 @@ $:	currentRecordId = records ? records[currentIndex] : null;
 {#await fp}
 <p>...waiting</p>
 {:then}
-<h4>{currentIndex + 1}/{records.length} {currentRecordId}</h4>
+<h4>
+	{#if records.length}
+	{currentIndex + 1}/{records.length} {currentRecordId}
+	{:else}
+	No unclassified records now
+	{/if}
+</h4>
 <Classification recordId={currentRecordId} />
 <ButtonGroup class="nav-buttons" unelevated color="primary">
     <Button unelevated on:click={onPrevious}>Previous</Button>

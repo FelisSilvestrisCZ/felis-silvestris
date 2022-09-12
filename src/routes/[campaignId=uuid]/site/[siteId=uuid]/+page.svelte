@@ -10,7 +10,7 @@
 
 <style>
 	.site-detail-view {
-	padding: 2em;
+	padding: 2em 2em 3em 2em;
 	}
 </style>
 

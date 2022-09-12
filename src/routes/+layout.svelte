@@ -26,8 +26,8 @@
 		border: 0;
 		margin: 0;
 		padding: 0;
-		/*font-family: 'Kanit';*/
-		/*font-weight: 300;*/
+		font-family: 'Kanit';
+		font-weight: 300;
 		}
 
 		.mdc-segmented-button__segment {
