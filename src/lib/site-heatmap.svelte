@@ -125,6 +125,7 @@
 	//opacity: 0.8;
 	z-index: 1;
 	border-radius: 2em;
+	box-shadow: 1px 1px 1px #1f2526;
 	}
 
 	.record.cat {
