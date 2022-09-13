@@ -1,6 +1,3 @@
-<script>
-</script>
-
 <style>
 	td.label {
 	font-size: 10px;
