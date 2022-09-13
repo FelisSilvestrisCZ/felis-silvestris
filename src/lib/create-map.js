@@ -1,7 +1,7 @@
-export default function createMap(data, clickHandler) {
+export default function createMap(mapElement, data, clickHandler) {
 	if (!data) return;
 	var stred = SMap.Coords.fromWGS84(data.dimensions.area.referencePoint.longitude, data.dimensions.area.referencePoint.latitude);
-	var mapa = new SMap(JAK.gel("mapa"), stred, 14);
+	var mapa = new SMap(mapElement, stred, 14);
 	mapa.addDefaultLayer(SMap.DEF_OPHOTO).enable();
 	// mapa.addDefaultControls();
 	var layer = new SMap.Layer.Marker();
@@ -11,6 +11,7 @@ export default function createMap(data, clickHandler) {
 	data.overlays.forEach((overlay, index, arr) => {
 		console.log(JSON.stringify(overlay));
 		var vrstva = new SMap.Layer.Image();     /* Obrázková vrstva */
+		vrstva.overlay = overlay;
 		mapa.addLayer(vrstva);                      /* Pøidat ji do mapy */
 		if (index == 0)
 			vrstva.enable();                         /* A povolit */
@@ -56,4 +57,6 @@ export default function createMap(data, clickHandler) {
 
 	var zoom = mapa.computeCenterZoom(coords);
 	mapa.setCenterZoom(zoom[0], zoom[1]);
+
+	return mapa;
 };

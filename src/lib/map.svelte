@@ -2,7 +2,12 @@
 	import { onMount } from 'svelte';
 
 	export let map;
+	export let selectedOverlay;
 	export let onClick;
+	
+	let mapElement;
+	let mapa;
+	
 
 	import createMap from './create-map.js'
 
@@ -12,17 +17,25 @@
 
 	onMount(async () => {
 	if (map) {
-		createMap(map, (m, lat, lon) => {if (onClick) onClick(m, lat, lon)});
+		mapa = createMap(mapElement, map, (m, lat, lon) => {if (onClick) onClick(m, lat, lon)});
 	}
 	});
+	
+	function selectOverlay(overlayName) {
+		alert(overlayName);
+	}
+	
+	
+	//$: selectOverlay(selectedOverlay);
 </script>
 
 <style>
-	#mapa {
+	.map {
 	width: 100vw;
 	height: 100vh;
 	}
 </style>
 
-<div id="mapa">&nbsp;</div>
+<div class="map" bind:this={mapElement}>&nbsp;</div>
+
 
