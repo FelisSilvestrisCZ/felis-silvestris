@@ -1,8 +1,13 @@
 <script>
 	import InfoRibbonItem from '$lib/info-ribbon-item.svelte'
+	import Select, { Option } from '@smui/select';
 
 	export let campaignId = null;
 	export let point = null;
+	export let mapData = null;
+
+	export let selectedOverlay = '';
+
 
 	let areaInfo = null;
 	export let pointInfo = null;
@@ -37,9 +42,20 @@
 			{Math.round(areaInfo.totalObservationDays * 10)/10}&nbsp;days<br/>{areaInfo.sitesCount}&nbsp;sites
 		</span>
 	</InfoRibbonItem>	
+	{#if mapData?.overlays?.length}
+	<InfoRibbonItem>
+	<span slot="label">Overlay</span>
+	<Select bind:value={selectedOverlay} slot="value">
+      {#each mapData.overlays.map(o => o.name) as overlay}
+        <Option value={overlay}>{overlay}</Option>
+      {/each}
+    </Select>
+	</InfoRibbonItem>
+	{/if}
 	{:catch error}
 	<p>An error occurred!</p>
 	{/await}
+	
 
 	{#await fetchPointInfo}
 	{:then}

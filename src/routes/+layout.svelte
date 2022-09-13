@@ -28,6 +28,36 @@
 		padding: 0;
 		font-family: 'Kanit';
 		font-weight: 300;
+		--mdc-typography-subtitle1-font-weight: 300;
+		--mdc-typography-font-family: 'Kanit';
+		--mdc-theme-primary: #d1f5ff;
+		--mdc-theme-surface: #92abb2;
+		--mdc-theme-on-surface: #d1f5ff;
+		--mdc-shape-medium: 0;
+		}
+
+		.mdc-menu {
+		position: absolute;
+		width: auto;
+		}
+
+		.smui-select--standard .mdc-select__dropdown-icon {
+			margin: 0;
+		}
+
+		.mdc-menu .mdc-deprecated-list {
+		color: #d1f5ff;
+		white-space: nowrap;
+		}
+
+		.mdc-deprecated-list-item {
+		height: auto;
+		max-width: auto;
+		line-height: 2em;
+		}
+
+		.mdc-select:not(.mdc-select--disabled) .mdc-select__dropdown-icon {
+		fill: #d1f5ff;
 		}
 
 		.mdc-segmented-button__segment {
@@ -43,6 +73,23 @@
 
 		.mdc-segmented-button__segment--selected {
 		border-bottom: 0.25em solid !important;
+		}
+
+		.mdc-select__anchor {
+		width: auto;
+		}
+
+		.smui-select--standard .mdc-select__anchor {
+		height: auto;
+		display: inline-block;
+		}
+
+		.mdc-select:not(.mdc-select--disabled) .mdc-select__selected-text {
+		color: inherit;
+		}
+
+		.mdc-line-ripple {
+		display: none;
 		}
 	</style>
 </svelte:head>

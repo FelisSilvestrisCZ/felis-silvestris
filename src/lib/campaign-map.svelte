@@ -6,17 +6,12 @@
 	import InfoRibbon from '$lib/info-ribbon.svelte'
 	import MapInfo from '$lib/map-info.svelte'
 
-	import Select, { Option } from '@smui/select';
-
-	let overlays = [];
-
-	let selectedOverlay = '';
-
 	export let campaignId;
 
 	let map;
 	let clickLatLon;
 	let pointInfo;
+	let selectedOverlay;
 
 	export let selectedSite = null;
 
@@ -31,9 +26,8 @@
 	return await response.json()
 	})().then(r => {
 		map = r;
-		overlays = map.overlays.map(o => o.name);
-		selectedOverlay = overlays.length ? overlays[0] : '';
-		}
+		selectedOverlay = map.overlays[0].name;
+	}
 	);
 </script>
 
@@ -51,15 +45,7 @@
 <p>An error occurred!</p>
 {/await}
 <InfoRibbon>
-	<MapInfo bind:campaignId={campaignId} bind:point={clickLatLon} bind:pointInfo={pointInfo} />
-		
-	{#if overlays.length}
-	<Select bind:value={selectedOverlay} slot="context-actions">
-      {#each overlays as overlay}
-        <Option value={overlay}>{overlay}</Option>
-      {/each}
-    </Select>
-	{/if}
+	<MapInfo bind:mapData={map} bind:campaignId={campaignId} bind:point={clickLatLon} bind:pointInfo={pointInfo} bind:selectedOverlay={selectedOverlay} />
 </InfoRibbon>
 {#if pointInfo?.site}
 	{#await goto('/' + campaignId + '/map/' + pointInfo.site.id)}
