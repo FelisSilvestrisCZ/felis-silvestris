@@ -22,11 +22,15 @@
 	});
 	
 	function selectOverlay(overlayName) {
-		alert(overlayName);
+		if (!mapa) return;
+		var currentOverlayLayer = mapa._layers.find(l => l.overlay && l._active);
+		var newOverlayLayer = mapa._layers.find(l => l.overlay?.name == overlayName);
+		currentOverlayLayer?.disable();
+		newOverlayLayer?.enable();
 	}
 	
 	
-	//$: selectOverlay(selectedOverlay);
+	$: selectOverlay(selectedOverlay);
 </script>
 
 <style>
