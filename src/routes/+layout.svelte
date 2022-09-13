@@ -8,6 +8,7 @@
 		loaded = true;
 		}
 	</script>
+	
 	<!-- bootstrap -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" />
 	<!-- Material Icons -->
@@ -42,7 +43,7 @@
 		}
 
 		.smui-select--standard .mdc-select__dropdown-icon {
-			margin: 0;
+		margin: 0;
 		}
 
 		.mdc-menu .mdc-deprecated-list {
