@@ -92,6 +92,14 @@
 		.mdc-line-ripple {
 		display: none;
 		}
+
+		/* Fix of rounding error in mapy.cz API client */
+		.smap img {
+		zoom: 1.005;
+		border: 0;
+		margin: 0;
+		padding: 0;
+		}
 	</style>
 </svelte:head>
 

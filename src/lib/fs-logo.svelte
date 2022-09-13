@@ -1,7 +1,7 @@
 <style>
 	#fs-logo {
 	position: absolute;
-	left: 2em;
+	left: 1em;
 	top: 2em;
 	width: 10em;
 	z-index: 20;
