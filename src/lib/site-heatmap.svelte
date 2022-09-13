@@ -130,31 +130,31 @@
 	//opacity: 0.8;
 	z-index: 1;
 	border-radius: 2em;
-	box-shadow: 1px 1px 1px #1f2526;
+	box-shadow: 0.5px 0.5px 1.5px #1f2526;
 	}
 
 	.record.cat {
-	background: rgb(209, 244, 255);
+	background: #B2D0D9;
 	}
 
 	.record.fox {
-	background: rgb(255, 212, 209);
+	background: #D9B2D0;
 	}
 
 	.record.mouse {
-	background: rgb(252, 255, 209);
+	background: #BBB2D9;
 	}
 
 	.record.hedgehog {
-	background: rgb(209, 255, 212);
+	background: #D9BBB2;
 	}
 
 	.record.bird {
-	background: rgb(220, 209, 255);
+	background: #D0D9B2
 	}
 
 	.record.other-animal {
-	background: rgb(255, 209, 244);
+	background: #B2D9BB;
 	}
 
 	.record.no-animal {

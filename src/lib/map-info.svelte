@@ -33,6 +33,14 @@
 	})().then(r => areaInfo = r);
 </script>
 
+<style>
+	span.overlay-color {
+		width: 1em;
+		height: 1em;
+		margin-right: 1em;
+	}
+</style>
+
 	{#await fetchAreaInfo}
 	{:then}
 	<InfoRibbonItem>
@@ -42,16 +50,19 @@
 			{Math.round(areaInfo.totalObservationDays * 10)/10}&nbsp;days<br/>{areaInfo.sitesCount}&nbsp;sites
 		</span>
 	</InfoRibbonItem>	
+	
 	{#if mapData?.overlays?.length}
 	<InfoRibbonItem>
 	<span slot="label">Overlay</span>
 	<Select bind:value={selectedOverlay} slot="value">
-      {#each mapData.overlays.map(o => o.name) as overlay}
-        <Option value={overlay}>{overlay}</Option>
+      {#each mapData.overlays as overlay}
+        <Option value={overlay.name}>
+			<span style="background: {overlay.cssColor}" class="overlay-color"/>{overlay.name}</Option>
       {/each}
     </Select>
 	</InfoRibbonItem>
 	{/if}
+	
 	{:catch error}
 	<p>An error occurred!</p>
 	{/await}
