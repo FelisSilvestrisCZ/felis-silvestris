@@ -5,6 +5,8 @@
 
 	let campaignId = $page.params.campaignId;
 	let selectedSite;
+
+	$: selectedSite = $page.params.siteId;
 </script>
 
 <FelisSilvestris />
