@@ -20,14 +20,12 @@
 		return days;
 	}
 	
-	function getHourClasses(run, day, hour) {
-		var dt = new Date(day.getTime() + 86400000 / 24 * hour);
-		var from = new Date(run.from);
-		var to = run.isInProgress ? new Date(Date.now()) : new Date(run.to);
-		if (dt < from) return "outside before";
-		if (dt >= to) return "outside after";
-		if (run.isInProgress) return "inside in-progress";
-		return "inside";
+	function getHourClasses(hour) {
+		var classes = hour.runId ? "in-run" : "out-run";
+		if (hour.isFirstHourOfRun) classes += " first";
+		if (hour.isLastHourOfRun) classes += " last";
+		if (hour.isRunInProgress) classes += " in-progress";
+		return classes;
 	}
 	
 	function getRecords(run, day, hour) {
@@ -45,18 +43,20 @@
 				});
 	}
 	
-	function getRecordClasses(record) {
+	function getRecordClasses(recordInHour) {
 		var classes = "record";
+		var record = siteDetail.records.find(r => r.id == recordInHour.recordId);
 		record.tags.forEach (tag => classes += ' ' + tag);	
 		return classes;	
 	}
 	
 	let recordSource;
 
-	function selectRecord(e, record) {
+	function selectRecord(e, recordId) {
 		if (selectedRecordElement) {
 			selectedRecordElement.classList.remove('selected');
 		}
+		var record = siteDetail.records.find(r => r.id = recordId);
 		recordSource = "https://localhost:800/api/record/" + record.id + "/source";
 		selectedRecord = record;
 		selectedRecordElement = e.target;
@@ -76,36 +76,14 @@
 	margin: 0.5em 0;
 	}
 
-	thead {
-	margin: 0.25em 0;
-	}
-
-	th, td {
+	td {
 	color: #92abb2;
 	position: relative;
-	//border-bottom: 0.5px dotted;
 	text-align: left;
-	padding: 1.2em 0 0.8em 0;
-	}
-
-	th {
-	color: #1f2526;
-	border-bottom: 0.5px solid;
-	padding: 0;
-	}
-
-	th.name {
-	text-transform: uppercase;
-	}
-
-	th.note, th.id {
-	font-weight: normal;
-	}
-
-	td {
+	padding: 2em 0 0 0;
 	position: relative;
 	}
-
+	
 	td.outside {
 	color: transparent;
 	}
@@ -113,7 +91,12 @@
 	td.in-progress {
 	background: lightpink;
 	}
-
+	
+	td.separator {
+	text-align: center;
+	text-decoration: underline;
+	}
+	
 	a.selected {
 	border: 2px solid yellow;
 	z-index: 5;
@@ -182,32 +165,42 @@
 	color: #d1f5ff;
 	z-index: 2;
 	}
+	
+	.observation-date {
+		position: absolute;
+		left: 0;
+		top: 0.5em;
+		white-space: nowrap;
+	}
 </style>
 
-{#each siteDetail.runs as run}
+
 <table class="run-table">
-	<thead>
-		<tr>
-			<th colspan="2">{run.from.substring(0, run.from.indexOf('T'))}</th>
-			<th class="name" colspan="3">{run.name}/{run.catboxName}</th>
-			<th class="note" colspan="19">{run.note}</th>
-		</tr>
-		<!--
-		<tr>
-			{#each hours as hour}
-			<th>{hour}</th>
-			{/each}
-		</tr>
-		-->
-	</thead>
 	<tbody>
-		{#each days(run) as day}
+		{#each siteDetail.observationDays as day}
+			{#if day.daysAfterLastRun > 1}
 			<tr>
-				{#each hours as hour}
-				<td class={getHourClasses(run, day, hour)}>
-					{hour}
-					{#each getRecords(run, day, hour) as record}
-					<a class={getRecordClasses(record)} style="left: {record.positionInHour * 100}%;" on:click={(e) => selectRecord(e, record)}>
+				<td class="separator" colspan="24">
+					{day.daysAfterLastRun} day(s) without observation
+				</td>
+			</tr>
+			{/if}
+			<tr>
+				{#each day.hours as hour}
+				<td class={getHourClasses(hour)}>
+					{#if hour.runId}
+						{hour.hour}
+					{:else}
+						&nbsp;
+					{/if}
+					{#if !hour.hour}
+						<div class="observation-date">{day.date.substring(0, day.date.indexOf('T'))}</div>
+					{/if}
+					{#if hour.isFirstHourOfRun}
+						<div class="observation-date" style="color: #1f2526;">{siteDetail.runs.find(r => r.id == hour.runId).name} {siteDetail.runs.find(r => r.id == hour.runId).catboxName}</div>
+					{/if}
+					{#each hour.records as record}
+					<a class={getRecordClasses(record)} style="left: {record.positionInHour * 100}%;" on:click={(e) => selectRecord(e, record.recordId)}>
 						
 					</a>
 					{/each}
@@ -217,7 +210,6 @@
 		{/each}
 	</tbody>
 </table>
-{/each}
 
 {#if selectedRecord && previewOpen}
 <div class="context-bar">
