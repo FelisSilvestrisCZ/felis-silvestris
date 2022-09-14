@@ -169,12 +169,28 @@
 	.observation-date {
 		position: absolute;
 		left: 0;
-		top: 0.5em;
+		top: 1em;
 		white-space: nowrap;
+		font-size: 12px;
+	}
+	
+	div.record {
+		color: #1f2526;
+		padding: 0.5em 1em;
 	}
 </style>
 
-
+<table>
+	<tr>
+		<td><div class="record cat">cat</div></td>
+		<td><div class="record mouse">mouse</div></td>
+		<td><div class="record fox">fox</div></td>
+		<td><div class="record hedgehog">hedgehog</div></td>
+		<td><div class="record bird">bird</div></td>
+		<td><div class="record other">other</div></td>
+		<td><div class="record no-animal">none</div></td>	
+	</tr>
+</table>
 <table class="run-table">
 	<tbody>
 		{#each siteDetail.observationDays as day}
