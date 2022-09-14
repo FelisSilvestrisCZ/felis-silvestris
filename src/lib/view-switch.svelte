@@ -30,6 +30,14 @@
 	];
 
 	let selectedView = views[0];
+
+	function selectViewFromPage() {
+		var viewName = $page.routeId.substring($page.routeId.indexOf('/') + 1);
+		viewName = viewName.indexOf('/') ? viewName.substring(0, viewName.indexOf('/')) : viewName;
+		selectedView = views.find(v => v.name == viewName);
+	}
+
+	$: selectViewFromPage($page);
 </script>
 
 <style>

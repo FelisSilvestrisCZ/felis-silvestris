@@ -6,5 +6,6 @@
 </script>
 
 <ViewSwitch bind:campaignId={campaignId} />
+
 <slot></slot>
 

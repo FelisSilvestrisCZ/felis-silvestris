@@ -9,7 +9,7 @@ export default function createMap(mapElement, data, clickHandler) {
 	layer.enable();
 
 	data.overlays.forEach((overlay, index, arr) => {
-		console.log(JSON.stringify(overlay));
+		// console.log(JSON.stringify(overlay));
 		var vrstva = new SMap.Layer.Image();     /* Obrázková vrstva */
 		vrstva.overlay = overlay;
 		mapa.addLayer(vrstva);                      /* Pøidat ji do mapy */

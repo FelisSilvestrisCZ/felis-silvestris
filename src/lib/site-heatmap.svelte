@@ -127,14 +127,13 @@
 	position: absolute;
 	bottom: 0;
 	left: 50%;
-	//opacity: 0.8;
 	z-index: 1;
 	border-radius: 2em;
 	box-shadow: 0.5px 0.5px 1.5px #1f2526;
 	}
 
 	.record.cat {
-	background: #B2D0D9;
+	background: #d1f5ff;
 	}
 
 	.record.fox {
