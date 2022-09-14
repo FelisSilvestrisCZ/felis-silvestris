@@ -43,9 +43,9 @@
 				});
 	}
 	
-	function getRecordClasses(recordInHour) {
+	function getRecordClasses(recordId) {
 		var classes = "record";
-		var record = siteDetail.records.find(r => r.id == recordInHour.recordId);
+		var record = siteDetail.records.find(r => r.id == recordId);
 		record.tags.forEach (tag => classes += ' ' + tag);	
 		return classes;	
 	}
@@ -114,6 +114,24 @@
 	border-radius: 2em;
 	box-shadow: 0.5px 0.5px 1.5px #1f2526;
 	}
+	
+	div.event {
+		width: 1em;
+		height: 1em;
+		position: absolute;
+		top: 0.7em;
+		left: 50%;
+		border-radius: 50%;
+		opacity: 50%;
+	}
+	
+	div.event.sunset {
+		background: midnightblue;
+	}
+	
+	div.event.sunrise {
+		background: yellow;
+	}
 
 	.record.cat {
 	background: #d1f5ff;
@@ -176,11 +194,27 @@
 	
 	div.record {
 		color: #1f2526;
-		padding: 0.5em 1em;
+		padding: 0.25em 0.5em;
+		margin: 0 0.5em;
+		border-radius: 2em;
+		box-shadow: 0.5px 0.5px 1.5px #1f2526;
+	}
+	
+	div.record .event {
+		display: inline-block;
+		position: relative;
+		top: 0.25em;
+		left: 0;
+		margin-right: 0.5em;
+		border: 0;
+		box-shadow: 0;
+	}
+	.legend {
+		margin-bottom: 2em;
 	}
 </style>
 
-<table>
+<table class="legend">
 	<tr>
 		<td><div class="record cat">cat</div></td>
 		<td><div class="record mouse">mouse</div></td>
@@ -188,7 +222,9 @@
 		<td><div class="record hedgehog">hedgehog</div></td>
 		<td><div class="record bird">bird</div></td>
 		<td><div class="record other">other</div></td>
-		<td><div class="record no-animal">none</div></td>	
+		<td><div class="record no-animal">none</div></td>
+		<td><div class="record"><div class="event sunrise"></div>sunrise</div></td>
+		<td><div class="record"><div class="event sunset"></div>sunset</div></td>
 	</tr>
 </table>
 <table class="run-table">
@@ -215,10 +251,12 @@
 					{#if hour.isFirstHourOfRun}
 						<div class="observation-date" style="color: #1f2526;">{siteDetail.runs.find(r => r.id == hour.runId).name} {siteDetail.runs.find(r => r.id == hour.runId).catboxName}</div>
 					{/if}
-					{#each hour.records as record}
-					<a class={getRecordClasses(record)} style="left: {record.positionInHour * 100}%;" on:click={(e) => selectRecord(e, record.recordId)}>
-						
-					</a>
+					{#each hour.events as event}
+					{#if event.eventType == "record"}
+					<a class={getRecordClasses(event.data)} style="left: {event.positionInHour * 100}%;" on:click={(e) => selectRecord(e, event.data)}></a>
+					{:else}
+					<div class="event {event.eventType}" style="left: {event.positionInHour * 100}%;"></div>
+					{/if}
 					{/each}
 				</td>
 				{/each}
