@@ -135,7 +135,7 @@
     height: 1em;
     background: darkgray;
 	border-radius: 2em;
-	box-shadow: 0.5px 0.5px 1.5px #1f2526;
+	box-shadow: 1px 1px 1.5px #1f2526;
 	}
 	
 	td a.record, td div.event {
@@ -144,6 +144,10 @@
 		left: 50%;
 		z-index: 1;
 		transform: translate(-50%, -50%);
+	}
+	
+	td div.event {
+		z-index: unset;
 	}
 	
 	div.event {
@@ -263,7 +267,7 @@
 						<div class="observation-date">{day.date.substring(0, day.date.indexOf('T'))}</div>
 					{/if}
 					{#if hour.isFirstHourOfRun}
-						<div class="observation-date" style="color: #1f2526;">{siteDetail.runs.find(r => r.id == hour.runId).name} {siteDetail.runs.find(r => r.id == hour.runId).catboxName}</div>
+						<div class="observation-date">{siteDetail.runs.find(r => r.id == hour.runId).name} {siteDetail.runs.find(r => r.id == hour.runId).catboxName}</div>
 					{/if}
 					{#each hour.events as event}
 					{#if event.eventType == "record"}
