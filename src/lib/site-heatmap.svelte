@@ -78,10 +78,10 @@
 
 	td {
 	color: #92abb2;
-	position: relative;
-	text-align: left;
-	padding: 2em 0 0 0;
-	position: relative;
+    position: relative;
+    text-align: left;
+    padding: 0.5em 0 0 0;
+    position: relative;
 	}
 	
 	td.outside {
@@ -103,26 +103,26 @@
 	}
 
 	a.record {
-	display: block;
-	width: 20%;
-	height: 90%;
-	background: darkgray;
-	position: absolute;
-	bottom: 0;
+    width: 1em;
+    height: 1em;
+    background: darkgray;
+    position: absolute;
+    bottom: 4px;
 	left: 50%;
 	z-index: 1;
 	border-radius: 2em;
 	box-shadow: 0.5px 0.5px 1.5px #1f2526;
+	transform: translatex(-50%);
 	}
 	
 	div.event {
 		width: 1em;
 		height: 1em;
 		position: absolute;
-		top: 0.7em;
+		bottom: 4px;
 		left: 50%;
 		border-radius: 50%;
-		opacity: 50%;
+		opacity: 30%;
 	}
 	
 	div.event.sunset {
@@ -185,11 +185,11 @@
 	}
 	
 	.observation-date {
-		position: absolute;
-		left: 0;
-		top: 1em;
-		white-space: nowrap;
-		font-size: 12px;
+	position: absolute;
+    left: 0;
+    top: -4px;
+    white-space: nowrap;
+    font-size: 12px;
 	}
 	
 	div.record {
