@@ -65,6 +65,22 @@
 	}
 	
 	let previewOpen = false;
+	let selectedDay = null;
+	let selectedDayElement = null;
+	
+	function toggleDaySelection(e, day) {
+		if (selectedDay === day) {
+			selectedDayElement.classList.remove("selected");
+			selectedDayElement = selectedDay = null;
+		} else {
+			if (selectedDayElement) {
+				selectedDayElement.classList.remove("selected");
+			}
+			selectedDayElement = e.currentTarget;
+			selectedDayElement.classList.add("selected");
+			selectedDay = day;
+		}
+	}
 </script>
 
 <style>
@@ -74,14 +90,23 @@
 	table-layout: fixed;
 	border-collapse: collapse;
 	margin: 0.5em 0;
-	}
-
-	td {
 	color: #92abb2;
+	}
+	
+	tr {
+		margin: 0.25em;
+	}
+	
+	td {
     position: relative;
     text-align: left;
     padding: 0.5em 0 0 0;
     position: relative;
+	}
+	
+	.selected, .day-detail {
+	background: #92abb2;
+	color: #d1f5ff;
 	}
 	
 	td.outside {
@@ -238,7 +263,7 @@
 				</td>
 			</tr>
 			{/if}
-			<tr>
+			<tr on:click={e => toggleDaySelection(e, day)}>
 				{#each day.hours as hour}
 				<td class={getHourClasses(hour)}>
 					{#if hour.runId}
@@ -262,6 +287,13 @@
 				</td>
 				{/each}
 			</tr>
+			{#if selectedDay === day}
+			<tr>
+				<td class="day-detail" colspan="24">
+					Day detail
+				</td>
+			</tr>
+			{/if}
 		{/each}
 	</tbody>
 </table>
