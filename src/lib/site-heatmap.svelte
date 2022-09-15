@@ -231,6 +231,35 @@
 		display: inline-block;
 		margin-right: 0.5em;
 	}
+	
+	div.day-detail {
+		white-space: nowrap;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		padding: 0;
+	}
+	
+	div.hour {
+		min-width: 320px;
+		width: 30vw;
+		max-width: 640px;
+		display: inline-block;
+		text-align: left;
+		position: relative;
+		height: 1em;
+		padding-top: 250px;
+		    border-right: 0.5px dotted;
+	}
+	
+	.day-detail-event video {
+		left: 0;
+		top: 0;
+		position: absolute;
+		height: 240px;
+		transform: translatex(-50%);
+		    box-shadow: 1px 1px 5px #1f2526;
+    border: 1px solid #d1f5ff;
+	}
 </style>
 
 <div class="legend">
@@ -281,7 +310,24 @@
 			{#if selectedDay === day}
 			<tr>
 				<td class="day-detail" colspan="24">
-					Day detail
+					<div class="day-detail">
+						{#each day.hours as hour}
+							<div class="hour">
+								{#each hour.events as event}
+									<div class="day-detail-event">
+										{#if event.eventType == "record"}
+		<video controls style="left: {event.positionInHour * 100}%;">
+			<source src={"https://localhost:800/api/record/" + event.data + "/source"} type="video/mp4" />
+		</video>
+										{:else}
+										<div class="event {event.eventType}" style="left: {event.positionInHour * 100}%;"></div>
+										{/if}
+									</div>
+								{/each}								
+								{hour.hour}
+							</div>
+						{/each}
+					</div>
 				</td>
 			</tr>
 			{/if}
