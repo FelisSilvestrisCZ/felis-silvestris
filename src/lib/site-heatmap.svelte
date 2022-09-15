@@ -123,6 +123,7 @@
 		left: 50%;
 		border-radius: 50%;
 		opacity: 30%;
+		transform: translatex(-50%);
 	}
 	
 	div.event.sunset {
