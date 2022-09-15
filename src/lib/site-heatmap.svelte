@@ -100,13 +100,16 @@
 	td {
     position: relative;
     text-align: left;
-    padding: 0.5em 0 0 0;
+    padding: 1em 0 0 0;
     position: relative;
 	}
 	
 	.selected, .day-detail {
-	background: #92abb2;
-	color: #d1f5ff;
+	color: #1f2526;
+	}
+	
+	.day-detail {
+		padding: 1em 0;
 	}
 	
 	td.outside {
@@ -213,7 +216,7 @@
 	.observation-date {
 	position: absolute;
     left: 0;
-    top: -4px;
+    top: 0;
     white-space: nowrap;
     font-size: 12px;
 	}
