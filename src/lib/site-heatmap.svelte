@@ -122,7 +122,6 @@
 	
 	td.separator {
 	text-align: center;
-	text-decoration: underline;
 	}
 	
 	.record.selected {
@@ -185,7 +184,7 @@
 	background: #D0D9B2
 	}
 
-	.record.other-animal {
+	.record.other	 {
 	background: #B2D9BB;
 	}
 
