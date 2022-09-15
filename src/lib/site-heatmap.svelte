@@ -125,33 +125,32 @@
 	text-decoration: underline;
 	}
 	
-	a.selected {
+	.record.selected {
 	border: 2px solid yellow;
 	z-index: 5;
 	}
 
-	a.record {
+	.record {
     width: 1em;
     height: 1em;
     background: darkgray;
-    position: absolute;
-    bottom: 4px;
-	left: 50%;
-	z-index: 1;
 	border-radius: 2em;
 	box-shadow: 0.5px 0.5px 1.5px #1f2526;
-	transform: translatex(-50%);
+	}
+	
+	td a.record, td div.event {
+		position: absolute;
+		bottom: 0em;
+		left: 50%;
+		z-index: 1;
+		transform: translate(-50%, -50%);
 	}
 	
 	div.event {
 		width: 1em;
 		height: 1em;
-		position: absolute;
-		bottom: 4px;
-		left: 50%;
 		border-radius: 50%;
 		opacity: 30%;
-		transform: translatex(-50%);
 	}
 	
 	div.event.sunset {
@@ -221,41 +220,27 @@
     font-size: 12px;
 	}
 	
-	div.record {
-		color: #1f2526;
-		padding: 0.25em 0.5em;
-		margin: 0 0.5em;
-		border-radius: 2em;
-		box-shadow: 0.5px 0.5px 1.5px #1f2526;
-	}
-	
-	div.record .event {
-		display: inline-block;
-		position: relative;
-    top: 0.22em;
-    left: 0.5em;
-		margin-right: 0.5em;
-		border: 0;
-		box-shadow: 0;
-	}
 	.legend {
 		margin-bottom: 2em;
 	}
+	
+	.legend .record, .legend .event {
+		display: inline-block;
+		margin-right: 0.5em;
+	}
 </style>
 
-<table class="legend">
-	<tr>
-		<td><div class="record cat">cat</div></td>
-		<td><div class="record mouse">mouse</div></td>
-		<td><div class="record fox">fox</div></td>
-		<td><div class="record hedgehog">hedgehog</div></td>
-		<td><div class="record bird">bird</div></td>
-		<td><div class="record other">other</div></td>
-		<td><div class="record no-animal">none</div></td>
-		<td><div class="record"><div class="event sunrise"></div>sunrise</div></td>
-		<td><div class="record"><div class="event sunset"></div>sunset</div></td>
-	</tr>
-</table>
+<div class="legend">
+		<div class="record cat"/>cat
+		<div class="record mouse" />mouse
+		<div class="record fox" />fox
+		<div class="record hedgehog" />hedgehog
+		<div class="record bird" />bird
+		<div class="record other" />other
+		<div class="record no-animal" />none
+		<div class="event sunrise"/>sunrise
+		<div class="event sunset"/>sunset
+</div>
 <table class="run-table">
 	<tbody>
 		{#each siteDetail.observationDays as day}

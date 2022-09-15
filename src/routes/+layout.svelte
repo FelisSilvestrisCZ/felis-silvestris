@@ -35,6 +35,7 @@
 		--mdc-theme-surface: #92abb2;
 		--mdc-theme-on-surface: #d1f5ff;
 		--mdc-shape-medium: 0;
+		scrollbar-gutter: stable;
 		}
 
 		.mdc-menu {
