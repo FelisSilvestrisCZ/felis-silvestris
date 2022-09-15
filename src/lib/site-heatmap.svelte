@@ -204,8 +204,8 @@
 	div.record .event {
 		display: inline-block;
 		position: relative;
-		top: 0.25em;
-		left: 0;
+    top: 0.22em;
+    left: 0.5em;
 		margin-right: 0.5em;
 		border: 0;
 		box-shadow: 0;

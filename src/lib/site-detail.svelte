@@ -35,7 +35,6 @@
 <div class="site-detail">
 	<h1>Site {siteDetail.site.name}</h1>
 	<p>{siteDetail.site.description}</p>
-	<p>&nbsp;</p>
 	<SiteHeatmap siteDetail={siteDetail} />
 </div>
 {:catch error}
