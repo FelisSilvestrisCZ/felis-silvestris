@@ -198,7 +198,6 @@
 	right: 2em;
 	height: 50vh;
 	z-index: 1;
-	//opacity: 0.7;
 	}
 
 	.context-bar .preview {
@@ -240,25 +239,31 @@
 	}
 	
 	div.hour {
-		min-width: 320px;
-		width: 30vw;
-		max-width: 640px;
+    white-space: nowrap;
+    min-width: 8em;
+    padding-left: 0.25em;
+    display: inline-block;
+    text-align: left;
+	}
+	
+	.day-detail-event {
 		display: inline-block;
-		text-align: left;
-		position: relative;
-		height: 1em;
-		padding-top: 250px;
-		    border-right: 0.5px dotted;
+		    border-left: 0.5px dotted;
+    padding: 0 0.25em;
+	}
+	
+	.dummy-event {
+		height: 240px;
+		width: 3em;
+		margin-bottom: 0.5em;
 	}
 	
 	.day-detail-event video {
-		left: 0;
-		top: 0;
-		position: absolute;
 		height: 240px;
-		transform: translatex(-50%);
-		    box-shadow: 1px 1px 5px #1f2526;
-    border: 1px solid #d1f5ff;
+		box-shadow: 1px 1px 5px #1f2526;
+		border: 1px solid #d1f5ff;
+		display: block;
+		margin-bottom: 0.5em;
 	}
 </style>
 
@@ -313,18 +318,22 @@
 					<div class="day-detail">
 						{#each day.hours as hour}
 							<div class="hour">
+								<div class="day-detail-event">
+									<div class="dummy-event" />
+									{hour.hour}:00
+								</div>
 								{#each hour.events as event}
 									<div class="day-detail-event">
 										{#if event.eventType == "record"}
-		<video controls style="left: {event.positionInHour * 100}%;">
-			<source src={"https://localhost:800/api/record/" + event.data + "/source"} type="video/mp4" />
-		</video>
+										<video controls style="left: {event.positionInHour * 100}%;">
+											<source src={"https://localhost:800/api/record/" + event.data + "/source"} type="video/mp4" />
+										</video>
+										{event.time.substring(event.time.indexOf('T') + 1).substring(0, 5).replace(/^0+/, '')}
 										{:else}
-										<div class="event {event.eventType}" style="left: {event.positionInHour * 100}%;"></div>
+										<!--<div class="event {event.eventType}" style="left: {event.positionInHour * 100}%;"></div>-->
 										{/if}
 									</div>
-								{/each}								
-								{hour.hour}
+								{/each}
 							</div>
 						{/each}
 					</div>
