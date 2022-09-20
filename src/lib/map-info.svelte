@@ -79,6 +79,9 @@
 			{#if pointInfo.score}
 			<br/>{Math.round(pointInfo.score.durationInDays * 10)/10} days
 			{/if}
+			{#if pointInfo.siteElevation}
+			<br/>{Math.round(pointInfo.siteElevation)} m
+			{/if}
 		</span>
 	</InfoRibbonItem>
 
