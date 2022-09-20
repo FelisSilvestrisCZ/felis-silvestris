@@ -240,7 +240,7 @@
 	
 	div.hour {
     white-space: nowrap;
-    min-width: 8em;
+    min-width: 5em;
     padding-left: 0.25em;
     display: inline-block;
     text-align: left;
@@ -248,18 +248,25 @@
 	
 	.day-detail-event {
 		display: inline-block;
-		    border-left: 0.5px dotted;
+		    border-left: 0.5px dotted #d1f5ff;
     padding: 0 0.25em;
+		position: relative;
 	}
 	
 	.dummy-event {
-		height: 240px;
+		height: 25em;
 		width: 3em;
 		margin-bottom: 0.5em;
 	}
 	
+	.day-detail-event .record {
+		position: absolute;
+		left: 1em;
+		top: 1em;
+	}
+	
 	.day-detail-event video {
-		height: 240px;
+		height: 25em;
 		box-shadow: 1px 1px 5px #1f2526;
 		border: 1px solid #d1f5ff;
 		display: block;
@@ -325,6 +332,7 @@
 								{#each hour.events as event}
 									<div class="day-detail-event">
 										{#if event.eventType == "record"}
+										<div class={getRecordClasses(event.data)}></div>
 										<video controls style="left: {event.positionInHour * 100}%;">
 											<source src={"https://localhost:800/api/record/" + event.data + "/source"} type="video/mp4" />
 										</video>

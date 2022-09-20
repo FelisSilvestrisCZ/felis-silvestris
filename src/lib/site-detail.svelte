@@ -33,7 +33,8 @@
 <p>...waiting</p>
 {:then}
 <div class="site-detail">
-	<h1>Site {siteDetail.site.name}</h1>
+	<h1>Site {siteDetail.site.name} <small>{Math.round(siteDetail.differenceToAverageTemperature * 100)/100}°C</small>
+</h1>
 	<p>{siteDetail.site.description}</p>
 	<SiteHeatmap siteDetail={siteDetail} />
 </div>
