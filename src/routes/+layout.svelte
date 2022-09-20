@@ -101,6 +101,37 @@
 		margin: 0;
 		padding: 0;
 		}
+
+		.map-pin {
+		position: absolute;
+		top: 40%;
+		left: 20%;
+
+		border-radius: 50%;
+		border: 8px solid #fff;
+		width: 8px;
+		height: 8px;
+		}
+
+		.map-pin::after {
+		position: absolute;
+		content: '';
+		width: 0px;
+		height: 0px;
+		bottom: -30px;
+		left: -6px;
+		border: 10px solid transparent;
+		border-top: 17px solid #fff;
+		}
+
+		.map-pin div {
+		position: absolute;
+		bottom: 1.5em;
+		left: 6px;
+		transform: translatex(-50%);
+		color: white;
+		font-family: sans-serif;
+		}
 	</style>
 </svelte:head>
 

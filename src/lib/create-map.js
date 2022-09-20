@@ -27,21 +27,22 @@ export default function createMap(mapElement, data, clickHandler) {
 
 	data.sites.forEach(function (place, index, arr) {
 		var znacka = JAK.mel("div");
-		var obrazek = JAK.mel("img", { src: "../../pin.png", style: "height: 24px;" });
+		var obrazek = JAK.mel("img", { src: data.sitesInProgress.includes(place.name) ? "../../pin-magenta.png" : "../../pin.png", style: "height: 24px;" });
 		znacka.appendChild(obrazek);
 
-		var popisek = JAK.mel("div", {}, { textAlign: "center", fontSize: "10px", color: "black" });
+		var popisek = JAK.mel("div", {}, { textAlign: "center", fontSize: "10px", color: "white", position: "absolute", color: "#d1f5ff", left: "-3px", top: "2.5em", transform: "translatex(50%)",  fontFamily: "Kanit" });
 		popisek.innerHTML = place.name;
-		//znacka.appendChild(popisek);
+		znacka.appendChild(popisek);
 
 		var markerImageUrl = "../../pin-4-lightblue-small.png";
 		if (data.sitesInProgress.includes(place.name)) markerImageUrl = "../../pin-4-pink-small.png";
-		var options = { title: place.name + "\r\n" + place.description, url: markerImageUrl };
+		var options = { title: place.name + "\r\n" + place.description, url: znacka, anchor: { left: 20, bottom: 0 } };
 		var loc = SMap.Coords.fromWGS84(place.longitude, place.latitude);
 		coords.push(loc);
 		var marker = new SMap.Marker(loc, place.name, options);
+		var relOptions = { anchor: { left: 0, bottom: 0 } };
+		//marker.decorate(SMap.Marker.Feature.RelativeAnchor, relOptions);
 		layer.addMarker(marker);
-		// loc.getAltitude().then(r => console.log(place.id + ' ' + place.name + ' ' + r));
 	});
 
 	var mouse = new SMap.Control.Mouse(SMap.MOUSE_PAN | SMap.MOUSE_WHEEL | SMap.MOUSE_ZOOM); /* Ovládání myší */
