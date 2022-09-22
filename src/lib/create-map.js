@@ -61,3 +61,5 @@ export default function createMap(mapElement, data, clickHandler) {
 
 	return mapa;
 };
+
+

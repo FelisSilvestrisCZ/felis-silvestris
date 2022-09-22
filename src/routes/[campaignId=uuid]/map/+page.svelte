@@ -25,5 +25,4 @@
 
 {#await fetchElevations}
 {:then}
-	Elevations resolved OK
 {/await}

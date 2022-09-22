@@ -132,6 +132,10 @@
 		color: white;
 		font-family: sans-serif;
 		}
+
+		.mapshot.smap .hud {
+		display: none;
+		}
 	</style>
 </svelte:head>
 

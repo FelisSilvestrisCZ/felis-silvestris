@@ -220,6 +220,7 @@
     top: 0;
     white-space: nowrap;
     font-size: 12px;
+	    z-index: 1;
 	}
 	
 	.legend {
