@@ -50,6 +50,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"html2canvas": "^1.4.1",
 		"svelte-frappe-charts": "^1.9.2"
 	}
 }
