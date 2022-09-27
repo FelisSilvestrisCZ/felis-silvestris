@@ -1,6 +1,9 @@
 <script>
 	import createSimpleMap from '$lib/create-simple-map.js'
+	import Tab, { Label } from '@smui/tab';
+	import TabBar from '@smui/tab-bar';
 	import SiteHeatmap from '$lib/site-heatmap.svelte';
+	import SiteRecords from '$lib/site-records.svelte';
 	import InfoRibbon from '$lib/info-ribbon.svelte'
 
 	export let campaignId;
@@ -25,10 +28,12 @@
 	let mapa;
 
 	async function createMap(e)  {
-	mapa = createSimpleMap(e, siteDetail.site.latitude, siteDetail.site.longitude, 3, 17);
+		if (siteDetail)	mapa = createSimpleMap(e, siteDetail.site.latitude, siteDetail.site.longitude, 3, 17);
 	};
 
 	$: createMap(mapElement);
+	
+	let active = "Heat map";
 </script>
 
 <style>
@@ -42,6 +47,11 @@
 		float: right;
 		width: 256px;
 		height: 256px;
+		margin-left: 2em;
+		margin-bottom: 2em;
+	}
+	.content {
+		margin-top: 2em;
 	}
 </style>
 
@@ -50,10 +60,23 @@
 {:then}
 <div class="site-detail">
 	<div class="map" bind:this={mapElement}></div>
-	<h1>Site {siteDetail.site.name} <small>{Math.round(siteDetail.differenceToAverageTemperature * 100)/100}°C {Math.round(siteDetail.siteElevation)} m</small>
-</h1>
+	<h1>
+		Site {siteDetail.site.name} <small>{Math.round(siteDetail.differenceToAverageTemperature * 100)/100}°C {Math.round(siteDetail.siteElevation)} m</small>
+	</h1>
 	<p>{siteDetail.site.description}</p>
-	<SiteHeatmap siteDetail={siteDetail} />
+	<TabBar tabs={['Heat map', 'Runs and records']} let:tab bind:active>
+		<!-- Note: the `tab` property is required! -->
+		<Tab {tab}>
+		  <Label>{tab}</Label>
+		</Tab>
+	</TabBar>
+</div>
+<div class="content">
+	{#if active == 'Heat map'}
+		<SiteHeatmap siteDetail={siteDetail} />
+	{:else if active == 'Runs and records'}
+		<SiteRecords siteDetail={siteDetail} />
+	{/if}
 </div>
 {:catch error}
 <p>An error occurred!</p>

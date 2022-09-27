@@ -92,26 +92,25 @@
 	margin: 0.5em 0;
 	color: #92abb2;
 	}
-	
+
 	tr {
-		margin: 0.25em;
+	margin: 0.25em;
 	}
-	
+
 	td {
-    position: relative;
-    text-align: left;
-    padding: 1em 0 0 0;
-    position: relative;
+	position: relative;
+	text-align: left;
+	padding: 1em 0 0 0;
 	}
-	
+
 	.selected, .day-detail {
 	color: #1f2526;
 	}
-	
+
 	.day-detail {
-		padding: 1em 0;
+	padding: 1em 0;
 	}
-	
+
 	td.outside {
 	color: transparent;
 	}
@@ -119,49 +118,49 @@
 	td.in-progress {
 	background: lightpink;
 	}
-	
+
 	td.separator {
 	text-align: center;
 	}
-	
+
 	.record.selected {
 	border: 2px solid yellow;
 	z-index: 5;
 	}
 
 	.record {
-    width: 1em;
-    height: 1em;
-    background: darkgray;
+	width: 1em;
+	height: 1em;
+	background: darkgray;
 	border-radius: 2em;
 	box-shadow: 1px 1px 1.5px #1f2526;
 	}
-	
+
 	td a.record, td div.event {
-		position: absolute;
-		bottom: 0em;
-		left: 50%;
-		z-index: 1;
-		transform: translate(-50%, -50%);
+	position: absolute;
+	bottom: -0.15em;
+	left: 50%;
+	z-index: 2;
+	transform: translate(-50%, -50%);
 	}
-	
+
 	td div.event {
-		z-index: unset;
+	z-index: unset;
 	}
-	
+
 	div.event {
-		width: 1em;
-		height: 1em;
-		border-radius: 50%;
-		opacity: 30%;
+	width: 1em;
+	height: 1em;
+	border-radius: 50%;
+	opacity: 30%;
 	}
-	
+
 	div.event.sunset {
-		background: midnightblue;
+	background: midnightblue;
 	}
-	
+
 	div.event.sunrise {
-		background: yellow;
+	background: yellow;
 	}
 
 	.record.cat {
@@ -213,65 +212,68 @@
 	color: #d1f5ff;
 	z-index: 2;
 	}
-	
+
 	.observation-date {
-	position: absolute;
-    left: 0;
-    top: 0;
-    white-space: nowrap;
-    font-size: 12px;
-	    z-index: 1;
-	}
-	
-	.legend {
-		margin-bottom: 2em;
-	}
-	
-	.legend .record, .legend .event {
-		display: inline-block;
-		margin-right: 0.5em;
-	}
-	
-	div.day-detail {
-		white-space: nowrap;
-		overflow-x: scroll;
-		overflow-y: hidden;
-		padding: 0;
-	}
-	
-	div.hour {
-    white-space: nowrap;
-    min-width: 5em;
-    padding-left: 0.25em;
-    display: inline-block;
-    text-align: left;
-	}
-	
-	.day-detail-event {
-		display: inline-block;
-		    border-left: 0.5px dotted #d1f5ff;
-    padding: 0 0.25em;
-		position: relative;
-	}
-	
-	.dummy-event {
-		height: 25em;
-		width: 3em;
-		margin-bottom: 0.5em;
-	}
-	
-	.day-detail-event .record {
 		position: absolute;
-		left: 1em;
-		top: 1em;
+		left: 0;
+		top: 0;
+		white-space: nowrap;
+		font-size: 12px;
+		z-index: 1;
+		background-color: #b2d0d9;
+		min-width: 100%;
+		padding-right: 2em;
 	}
-	
+
+	.legend {
+	margin-bottom: 2em;
+	}
+
+	.legend .record, .legend .event {
+	display: inline-block;
+	margin-right: 0.5em;
+	}
+
+	div.day-detail {
+	white-space: nowrap;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	padding: 0;
+	}
+
+	div.hour {
+	white-space: nowrap;
+	min-width: 5em;
+	padding-left: 0.25em;
+	display: inline-block;
+	text-align: left;
+	}
+
+	.day-detail-event {
+	display: inline-block;
+	border-left: 0.5px dotted #d1f5ff;
+	padding: 0 0.25em;
+	position: relative;
+	}
+
+	.dummy-event {
+	height: 25em;
+	width: 3em;
+	margin-bottom: 0.5em;
+	}
+
+	.day-detail-event .record {
+	position: absolute;
+	left: 1em;
+	top: 1em;
+	}
+
 	.day-detail-event video {
-		height: 25em;
-		box-shadow: 1px 1px 5px #1f2526;
-		border: 1px solid #d1f5ff;
-		display: block;
-		margin-bottom: 0.5em;
+	height: 25em;
+	box-shadow: 1px 1px 5px #1f2526;
+	border: 1px solid #d1f5ff;
+	display: block;
+	margin-bottom: 0.5em;
 	}
 </style>
 
@@ -304,15 +306,18 @@
 					{:else}
 						&nbsp;
 					{/if}
-					{#if !hour.hour}
-						<div class="observation-date">{day.date.substring(0, day.date.indexOf('T'))}</div>
+					{#if hour.temperatureInCelsius}
+						<div class="observation-date">{Math.round(hour.temperatureInCelsius * 10.0)/10.0}°C</div>
 					{/if}
 					{#if hour.isFirstHourOfRun}
-						<div class="observation-date">{siteDetail.runs.find(r => r.id == hour.runId).name} {siteDetail.runs.find(r => r.id == hour.runId).catboxName}</div>
+					<div class="observation-date">{siteDetail.runs.find(r => r.id == hour.runId).name} {siteDetail.runs.find(r => r.id == hour.runId).catboxName}</div>
+					{/if}
+					{#if !hour.hour}
+					<div class="observation-date">{day.date.substring(0, day.date.indexOf('T'))}</div>
 					{/if}
 					{#each hour.events as event}
 					{#if event.eventType == "record"}
-					<a class={getRecordClasses(event.data)} style="left: {event.positionInHour * 100}%;" on:click={(e) => selectRecord(e, event.data)}></a>
+					<a class={getRecordClasses(event.data)} style="left: {event.positionInHour * 100}%;" on:click={(e) => selectRecord(e, event.data)} title={event.data}></a>
 					{:else}
 					<div class="event {event.eventType}" style="left: {event.positionInHour * 100}%;"></div>
 					{/if}
