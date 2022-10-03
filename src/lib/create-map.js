@@ -4,7 +4,7 @@ export default function createMap(mapElement, data, clickHandler) {
 	var mapa = new SMap(mapElement, stred, 14);
 	mapa.addDefaultLayer(SMap.DEF_OPHOTO).enable();
 	var scale = new SMap.Control.Scale();
-	mapa.addControl(scale, { left: "2em", bottom: "2em" });
+	mapa.addControl(scale, { left: "48px", bottom: "36px" });
 	// mapa.addDefaultControls();
 	var layer = new SMap.Layer.Marker();
 	mapa.addLayer(layer);

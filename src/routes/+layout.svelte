@@ -143,7 +143,7 @@
 		font-family: 'Kanit';
 		}
 
-		smap .scale .parts {
+		.smap .scale .parts {
 		border: none;
 		}
 
