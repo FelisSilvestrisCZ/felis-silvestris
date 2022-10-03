@@ -38,7 +38,9 @@
 					{record.tags}
 				</td>
 				<td>
-					{record.timestamp?.celsiusTemperature}°C
+					{#if record.timestamp && record.isTimestampTemperatureValid}
+					{record.timestamp.celsiusTemperature}°C
+					{/if}
 				</td>
 			</tr>
 		{/each}

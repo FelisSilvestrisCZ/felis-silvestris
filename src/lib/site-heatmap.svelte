@@ -43,10 +43,13 @@
 				});
 	}
 	
+	function getRecord(recordId) {
+		return siteDetail.records.find(r => r.id == recordId);
+	}				
+	
 	function getRecordClasses(recordId) {
 		var classes = "record";
-		var record = siteDetail.records.find(r => r.id == recordId);
-		record.tags.forEach (tag => classes += ' ' + tag);	
+		getRecord(recordId).tags.forEach (tag => classes += ' ' + tag);	
 		return classes;	
 	}
 	
@@ -56,7 +59,7 @@
 		if (selectedRecordElement) {
 			selectedRecordElement.classList.remove('selected');
 		}
-		var record = siteDetail.records.find(r => r.id = recordId);
+		var record = getRecord(recordId);
 		recordSource = "https://localhost:800/api/record/" + record.id + "/source";
 		selectedRecord = record;
 		selectedRecordElement = e.target;
@@ -183,7 +186,7 @@
 	background: #D0D9B2
 	}
 
-	.record.other	 {
+	.record.other-animal	 {
 	background: #B2D9BB;
 	}
 
@@ -223,6 +226,10 @@
 		background-color: #b2d0d9;
 		min-width: 100%;
 		padding-right: 2em;
+	}
+	
+	.in-progress .observation-date {
+		background-color: lightpink;
 	}
 
 	.legend {
@@ -317,7 +324,7 @@
 					{/if}
 					{#each hour.events as event}
 					{#if event.eventType == "record"}
-					<a class={getRecordClasses(event.data)} style="left: {event.positionInHour * 100}%;" on:click={(e) => selectRecord(e, event.data)} title={event.data}></a>
+					<a class={getRecordClasses(event.data)} style="left: {event.positionInHour * 100}%;" on:click|stopPropagation={(e) => selectRecord(e, event.data)} title={event.data}></a>
 					{:else}
 					<div class="event {event.eventType}" style="left: {event.positionInHour * 100}%;"></div>
 					{/if}
@@ -368,7 +375,7 @@
 			<source src={recordSource} type={selectedRecord.contentType} />
 		</video>
 		{:else}
-		<img class ="preview" src={recordSource} />
+		<img class="preview" type={selectedRecord.contentType} src={recordSource} />
 		{/if}
 
 	{/key}

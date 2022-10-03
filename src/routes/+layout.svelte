@@ -133,8 +133,30 @@
 		font-family: sans-serif;
 		}
 
-		.mapshot.smap .hud {
+		.mapshot.smap .hud, .smap .copyright {
 		display: none;
+		}
+
+		.smap .scale {
+		text-shadow: 1px 0px 1px #1f2526;
+		color: #d1f5ff;
+		font-family: 'Kanit';
+		}
+
+		smap .scale .parts {
+		border: none;
+		}
+
+		.smap .scale .parts span.even {
+		border-color: #d1f5ff;
+		}
+
+		.smap .scale .parts span.odd {
+		border-color: #1f2526;
+		}
+
+		.smap .scale .unit {
+		top: 10px;
 		}
 	</style>
 </svelte:head>
