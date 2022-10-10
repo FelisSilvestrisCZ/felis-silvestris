@@ -48,6 +48,9 @@
 		<span slot="value">
 			{Math.round(areaInfo.area.width/100)/10}&times;{Math.round(areaInfo.area.height/100)/10}={Math.round(areaInfo.area.height*areaInfo.area.width/1e6*10)/10}&nbsp;km<sup>2</sup><br/>
 			{Math.round(areaInfo.totalObservationDays * 10)/10}&nbsp;days<br/>{areaInfo.sitesCount}&nbsp;sites
+			{#if areaInfo.sitesWithRunInProgress}
+				 <br />{areaInfo.sitesWithRunInProgress} running
+			{/if}
 		</span>
 	</InfoRibbonItem>	
 	
