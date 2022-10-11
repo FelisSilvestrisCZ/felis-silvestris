@@ -11,7 +11,7 @@
 
 	async function fetchPoint(p) {
 	if (p && campaignId) {
-	const response = await fetch('https://localhost:800/api/campaign/' + campaignId + '/map/' + p[1] + '/' + p[0])
+	const response = await fetch('https://localhost:800/api/campaign/' + campaignId + '/user-location/' + p[1] + '/' + p[0])
 	return await response.json();
 	} else {
 	return null;
@@ -32,14 +32,12 @@
 <Geolocation getPosition bind:coords />
 
 <pre>
-	{JSON.stringify(coords)}
 	{#await fetchPointInfo}
 	{:then}
-		<!--{JSON.stringify(pointInfo)}-->
-		{#if pointInfo.isOnMap}
-			{pointInfo.site.name}
+		{#if pointInfo.isUserInCampaignArea}
+			You are within the observation area
 		{:else}
-			Not on map
+			You are {Math.round(pointInfo.distanceToCenterOfCampaignArea/100)/10.0} km from the campaign target area.
 		{/if}
 	{:catch error}
 	{/await}
