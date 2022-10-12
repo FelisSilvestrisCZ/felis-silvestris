@@ -39,6 +39,12 @@
 		{:else}
 			You are {Math.round(pointInfo.distanceToCenterOfCampaignArea/100)/10.0} km from the campaign target area.
 		{/if}
+		{#if pointInfo.nearestSite}
+		Nearest site: {pointInfo.nearestSite.siteName}, {Math.round(pointInfo.nearestSite.distance/100)/10.0} km<br/>
+		{#if pointInfo.nearestSite.runningObservation}
+			Observation {pointInfo.nearestSite.runningObservation.name} {pointInfo.nearestSite.runningObservation.catbox.name}
+		{/if}
+		{/if}
 	{:catch error}
 	{/await}
 </pre>
