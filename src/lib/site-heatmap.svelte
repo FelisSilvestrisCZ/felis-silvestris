@@ -228,6 +228,10 @@
 		padding-right: 2em;
 	}
 	
+	.observation-date.without-recorder {
+		text-decoration: line-through;
+	}
+	
 	.in-progress .observation-date {
 		background-color: lightpink;
 	}
@@ -317,7 +321,7 @@
 						<div class="observation-date">{Math.round(hour.temperatureInCelsius * 10.0)/10.0}°C</div>
 					{/if}
 					{#if hour.isFirstHourOfRun}
-					<div class="observation-date">{siteDetail.runs.find(r => r.id == hour.runId).name} {siteDetail.runs.find(r => r.id == hour.runId).catboxName}</div>
+					<div class="observation-date {siteDetail.runs.find(r => r.id == hour.runId).hasRecordingDevice ? 'with-recorder' : 'without-recorder'}">{siteDetail.runs.find(r => r.id == hour.runId).name} {siteDetail.runs.find(r => r.id == hour.runId).catboxName}</div>
 					{/if}
 					{#if !hour.hour}
 					<div class="observation-date">{day.date.substring(0, day.date.indexOf('T'))}</div>
